@@ -1,0 +1,18 @@
+{
+  "_leia": "Depoimentos inseridos a mao. Para adicionar, copie um bloco da lista e rode build.py. Use paragrafos separados por linha em branco no campo texto.",
+  "nota": 5,
+  "total": 21,
+  "url": "https://share.google/rY2mr2Bo883o5oMmp",
+  "depoimentos": [
+    {
+      "quem": "Lavynia",
+      "nota": 5,
+      "texto": "Encontrar a Rafa foi um divisor de águas para nós. Meu filho criou um vínculo muito bonito com ela, e cada sessão trouxe avanços que fizeram diferença no nosso dia a dia. Além de uma excelente profissional, ela é extremamente humana, acolhedora e atenciosa. Super indico!!! 😍"
+    },
+    {
+      "quem": "Joice",
+      "nota": 5,
+      "texto": "Existem profissionais que exercem uma profissão, e existem aqueles que transformam vidas. Você faz parte desse segundo grupo. É emocionante ver o amor, a dedicação, a paciência e o respeito com que cuida de cada criança autista, enxergando muito além dos desafios e valorizando cada pequena conquista.\n\nSeu trabalho oferece esperança às famílias, fortalece a autoestima das crianças e mostra que, com acolhimento, conhecimento e compromisso, é possível abrir caminhos para um desenvolvimento cheio de possibilidades. Cada sorriso, cada evolução e cada passo conquistado também carregam um pouco da sua dedicação.\n\nQue você nunca duvide da importância do que faz. O impacto do seu trabalho permanece na vida de muitas crianças e famílias, deixando marcas de carinho, confiança e transformação. Parabéns por ser uma profissional tão humana, competente e inspiradora. O mundo precisa de mais pessoas como você."
+    }
+  ]
+}

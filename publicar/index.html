@@ -1,0 +1,2157 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Psicóloga infantojuvenil na Barra da Tijuca, Rio de Janeiro. Atendimento acolhedor para crianças e adolescentes em TCC e ABA, com orientação para pais.">
+<meta name="author" content="Rafaella Rodrigues">
+<meta name="theme-color" content="#F4F1EB">
+<link rel="canonical" href="https://SEUDOMINIO.com.br/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Rafaella Rodrigues · Psicóloga Infantojuvenil">
+<meta property="og:description" content="Psicóloga infantojuvenil na Barra da Tijuca, Rio de Janeiro. Atendimento acolhedor para crianças e adolescentes em TCC e ABA, com orientação para pais.">
+<meta property="og:image" content="https://SEUDOMINIO.com.br/assets/logo_badge.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/logo_badge.png">
+<link rel="apple-touch-icon" href="assets/logo_badge.png">
+<title>Rafaella Rodrigues | Psicóloga Infantojuvenil na Barra da Tijuca</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap">
+
+<style>
+/* ============================================================
+   Rafaella Rodrigues · Psicóloga Infantojuvenil
+   Paleta e tipografia conforme manual de identidade visual
+   (Ravena Luz | Designer de Marcas, 2026)
+   ============================================================ */
+
+:root{
+  /* Paleta da marca */
+  --vinho:#71202E;
+  --terracota:#D0442A;
+  --rosa:#FFABCF;
+  --menta:#CBE3CB;
+  --azul:#95B0DD;
+  --amarelo:#EDBA3D;
+  --creme:#F4F1EB;
+
+  /* Papéis (tema claro) */
+  --ground:#F4F1EB;
+  --surface:#FFFFFF;
+  --surface-2:#FBF9F5;
+  --ink:#3B2B2E;
+  --ink-strong:#71202E;
+  --ink-muted:#7A6367;
+  --line:#E3DBD2;
+  --line-strong:#CFC3B8;
+  --accent:#D0442A;              /* terracota: rotulos, setas e foco */
+  --accent-ink:#FFFFFF;
+
+  /* Botao de acao. Usa o vinho do logotipo, que e a cor mais
+     forte da paleta e a que mais amarra o botao a marca. O
+     terracota segue nos rotulos e detalhes. */
+  --cta:#71202E;
+  --cta-hover:#8C2A39;
+  --cta-ink:#FFF7F2;
+  --halo:#FFABCF;
+  --deep:#71202E;
+  --deep-ink:#F7F2EE;
+  --deep-muted:#DDBCC2;
+  --shadow:0 2px 4px rgba(113,32,46,.04), 0 12px 32px rgba(113,32,46,.07);
+  --shadow-lg:0 4px 8px rgba(113,32,46,.05), 0 24px 60px rgba(113,32,46,.11);
+
+  /* Tipografia */
+  --display:"Poppins","Century Gothic","Avenir Next",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+
+  --pad:clamp(20px,5vw,40px);
+  --maxw:1180px;
+  --r-pill:999px;
+  --r-card:28px;
+}
+
+/* Tema unico e proposital: claro.
+   Os logotipos e personagens da marca sao artes de linha em vinho fixo sobre
+   fundo transparente, so tem contraste sobre base clara. Por isso a pagina
+   nao inverte no tema escuro do visualizador: todas as cores, inclusive o
+   fundo do body, sao pintadas explicitamente a partir dos tokens acima. */
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--ground);
+  color-scheme:light;
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,h4{
+  font-family:var(--display);
+  color:var(--ink-strong);
+  font-weight:600;
+  line-height:1.12;
+  letter-spacing:-.02em;
+  text-wrap:balance;
+  margin:0;
+}
+p{margin:0}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad)}
+
+/* Etiqueta de seção */
+.eyebrow{
+  font-family:var(--body);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin:0 0 14px;
+}
+.eyebrow--onDeep{color:var(--halo)}
+
+/* Marca-texto rosa, vem da tarja do logotipo */
+.mark{
+  position:relative;
+  white-space:nowrap;
+  z-index:0;
+}
+.mark::after{
+  content:"";
+  position:absolute;
+  left:-.12em; right:-.12em;
+  bottom:.02em;
+  height:.42em;
+  background:var(--halo);
+  border-radius:3px;
+  z-index:-1;
+}
+
+/* ---------- Botões (pílula, motivo do manual) ---------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-family:var(--display);
+  font-weight:600;
+  font-size:16px;
+  letter-spacing:-.01em;
+  padding:15px 30px;
+  border-radius:var(--r-pill);
+  border:2px solid transparent;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+}
+.btn svg{flex:none}
+.btn--primary{background:var(--cta);color:var(--cta-ink);box-shadow:var(--shadow)}
+.btn--primary:hover{background:var(--cta-hover);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn--ghost{background:transparent;color:var(--ink-strong);border-color:var(--line-strong)}
+.btn--ghost:hover{border-color:var(--ink-strong);transform:translateY(-2px)}
+.btn--onDeep{background:var(--creme);color:var(--vinho);border-color:transparent}
+.btn--onDeep:focus-visible{outline-color:var(--creme)}
+.btn--onDeep:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn--outlineDeep{background:transparent;color:var(--deep-ink);border-color:rgba(247,242,238,.4)}
+.btn--outlineDeep:hover{border-color:var(--deep-ink);transform:translateY(-2px)}
+
+:where(a,button,summary):focus-visible{
+  outline:3px solid var(--accent);
+  outline-offset:3px;
+  border-radius:6px;
+}
+
+/* Texto corrido justificado.
+   A regra e invertida de proposito: tudo que e paragrafo dentro do conteudo
+   entra justificado por padrao, e a lista curta de excecoes abaixo sai. Assim
+   uma secao nova nunca nasce desalinhada por esquecimento de cadastrar a
+   classe aqui.
+   A justificacao vale em todas as larguras, inclusive no celular. Quem
+   segura a qualidade em coluna estreita e a hifenizacao: sem ela a
+   justificacao no mobile abre buracos grandes entre as palavras. Ela depende
+   do lang="pt-BR" que esta no <header>, <main> e <footer>, entao nao remova
+   esse atributo. */
+main p,
+main .reflect__lead,
+.faq details p{
+  text-align:justify;
+  text-justify:inter-word;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+}
+
+/* Excecoes: rotulos, dados de contato e blocos centralizados. Sao textos
+   curtos, em que justificar nao muda nada ou atrapalha. */
+.eyebrow,
+.chip,
+.card__age,
+.about__portrait figcaption,
+.review__who span,
+.reviews__meta p,
+.reviews__score,
+.section__head--center p,
+.reviews__vazio,
+.reviews__vazio p,
+.ig__vazio,
+.ig__vazio p{
+  text-align:left;
+  hyphens:manual;
+}
+.section__head--center p{text-align:center}
+
+/* ---------- Navegação ---------- */
+.nav{
+  position:sticky;
+  /* referencia para o painel do menu no mobile */
+  top:0;
+  z-index:50;
+  padding:14px 0;
+  background:color-mix(in srgb, var(--ground) 86%, transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid transparent;
+  transition:border-color .2s ease;
+}
+.nav.is-stuck{border-bottom-color:var(--line)}
+.nav__inner{
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+.nav__logo{
+  flex:none;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+}
+.nav__logo img{height:46px;width:auto}
+.nav__crp{
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:.1em;
+  color:var(--ink-muted);
+  white-space:nowrap;
+  padding-left:12px;
+  border-left:1px solid var(--line-strong);
+}
+
+.nav__menu{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  margin-left:auto;
+}
+.nav__links{
+  display:flex;
+  gap:28px;
+  align-items:center;
+  font-size:15px;
+  font-weight:500;
+}
+.nav__links a{
+  text-decoration:none;
+  color:var(--ink);
+  padding-bottom:3px;
+  border-bottom:2px solid transparent;
+  transition:border-color .18s ease,color .18s ease;
+}
+.nav__links a:hover{color:var(--ink-strong);border-bottom-color:var(--halo)}
+.nav .btn{padding:11px 22px;font-size:15px}
+
+/* Botao do menu: so aparece no mobile */
+.nav__toggle{
+  display:none;
+  margin-left:auto;
+  width:44px;height:44px;
+  border:1px solid var(--line-strong);
+  border-radius:14px;
+  background:transparent;
+  cursor:pointer;
+  padding:0;
+  place-items:center;
+}
+/* tres tracos feitos com o proprio elemento mais os pseudo-elementos */
+.nav__burger,
+.nav__burger::before,
+.nav__burger::after{
+  display:block;
+  width:19px;height:2px;
+  background:var(--ink-strong);
+  border-radius:2px;
+  transition:transform .22s ease, opacity .18s ease;
+}
+.nav__burger{position:relative}
+.nav__burger::before,
+.nav__burger::after{content:"";position:absolute;left:0}
+.nav__burger::before{top:-6px}
+.nav__burger::after{top:6px}
+/* aberto: vira um X */
+.nav__toggle[aria-expanded="true"] .nav__burger{background:transparent}
+.nav__toggle[aria-expanded="true"] .nav__burger::before{transform:translateY(6px) rotate(45deg)}
+.nav__toggle[aria-expanded="true"] .nav__burger::after{transform:translateY(-6px) rotate(-45deg)}
+@media (prefers-reduced-motion:reduce){
+  .nav__burger,.nav__burger::before,.nav__burger::after{transition:none}
+}
+
+@media (max-width:900px){
+  .nav__logo img{height:38px}
+  .nav__crp{font-size:10.5px;padding-left:10px}
+  .nav__toggle{display:grid}
+
+  /* o menu vira um painel que desce abaixo do cabecalho */
+  .nav__menu{
+    position:absolute;
+    left:0;right:0;
+    top:100%;
+    flex-direction:column;
+    align-items:stretch;
+    gap:4px;
+    margin-left:0;
+    padding:12px var(--pad) 20px;
+    background:var(--ground);
+    border-bottom:1px solid var(--line);
+    box-shadow:var(--shadow);
+    /* fechado: escondido sem sair do fluxo de foco por acidente */
+    display:none;
+  }
+  .nav__menu.is-open{display:flex}
+  .nav__links{flex-direction:column;align-items:stretch;gap:0;font-size:16px}
+  .nav__links a{
+    padding:14px 4px;
+    border-bottom:1px solid var(--line);
+    border-radius:0;
+  }
+  .nav__links a:last-child{border-bottom-color:transparent}
+  .nav__menu .btn{margin-top:12px;width:100%}
+}
+/* Em tela estreita o CRP passa a ficar embaixo do logotipo, em vez de sumir:
+   e informacao obrigatoria e precisa aparecer no cabecalho em qualquer largura. */
+@media (max-width:460px){
+  .nav__logo{flex-direction:column;align-items:flex-start;gap:3px}
+  .nav__crp{
+    padding-left:0;
+    border-left:0;
+    font-size:10px;
+    letter-spacing:.08em;
+  }
+}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;
+  padding:clamp(48px,8vw,86px) 0 clamp(56px,8vw,96px);
+  overflow:hidden;
+}
+.hero__blobs{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+}
+.hero__blobs span{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(2px);
+  opacity:.5;
+}
+.b1{width:min(46vw,420px);aspect-ratio:1;background:var(--menta);top:-9%;right:-7%}
+.b2{width:min(30vw,270px);aspect-ratio:1;background:var(--rosa);bottom:2%;left:-9%;opacity:.42}
+.b3{width:min(20vw,170px);aspect-ratio:1;background:var(--azul);top:46%;right:41%;opacity:.28}
+
+.hero__grid{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:clamp(32px,5vw,68px);
+  align-items:start;
+}
+
+/* O selo alinha pelo topo da headline, nao pelo centro da coluna. O
+   deslocamento equivale ao bloco do rotulo acima do h1: uma linha de 12px com
+   entrelinha 1.65, mais os 14px de margem inferior. */
+.hero__badge{
+  --recuo-rotulo:calc(12px * 1.65 + 14px);
+  align-self:start;
+  margin-top:var(--recuo-rotulo);
+}
+/* nessa faixa o rotulo quebra em duas linhas e o recuo dobra */
+@media (max-width:1075px) and (min-width:901px){
+  .hero__badge{--recuo-rotulo:calc(12px * 1.65 * 2 + 14px)}
+}
+@media (max-width:900px){
+  .hero__grid{grid-template-columns:1fr;gap:44px}
+}
+
+.hero h1{
+  font-size:clamp(38px,5.6vw,62px);
+  font-weight:600;
+  margin-bottom:22px;
+}
+.hero__lede{
+  font-size:clamp(17px,2vw,19.5px);
+  color:var(--ink-muted);
+  max-width:53ch;
+  margin-bottom:32px;
+}
+.hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
+
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-pill);
+  padding:9px 17px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--ink);
+  box-shadow:0 1px 2px rgba(113,32,46,.03);
+}
+.chip i{width:8px;height:8px;border-radius:50%;flex:none}
+
+/* Selo circular do hero */
+.hero__badge{
+  position:relative;
+  display:grid;
+  place-items:center;
+}
+.hero__badge::before{
+  content:"";
+  position:absolute;
+  width:86%;
+  aspect-ratio:1;
+  background:var(--menta);
+  border-radius:50%;
+  opacity:.55;
+}
+.hero__badge img{
+  position:relative;
+  width:min(100%,400px);
+}
+.hero__badge .float{
+  position:absolute;
+  width:96px;
+  filter:drop-shadow(0 10px 24px rgba(113,32,46,.14));
+}
+.hero__badge .float--a{top:-2%;left:-2%;width:104px}
+.hero__badge .float--b{bottom:2%;right:-3%;width:86px}
+@media (max-width:900px){
+  .hero__badge{order:-1;margin-top:0}
+  .hero__badge img{width:min(74%,300px)}
+  /* mantem os personagens dentro da tela em telas estreitas */
+  .hero__badge .float--a{width:74px;top:0;left:6%}
+  .hero__badge .float--b{width:64px;bottom:6%;right:6%}
+}
+
+@keyframes bob{
+  0%,100%{transform:translateY(0) rotate(-3deg)}
+  50%{transform:translateY(-12px) rotate(3deg)}
+}
+.float--a{animation:bob 6s ease-in-out infinite}
+.float--b{animation:bob 7.5s ease-in-out infinite .8s}
+@media (prefers-reduced-motion:reduce){
+  .float--a,.float--b{animation:none}
+}
+
+/* ---------- Seções ---------- */
+.section{padding:clamp(56px,8vw,100px) 0}
+.section--tinted{background:var(--surface-2)}
+.section--deep{background:var(--deep);color:var(--deep-ink)}
+.section--deep h2,.section--deep h3{color:var(--deep-ink)}
+.section--deep p{color:var(--deep-muted)}
+
+.section__head{max-width:62ch;margin-bottom:clamp(34px,4vw,54px)}
+.section__head h2{font-size:clamp(29px,3.9vw,44px);margin-bottom:16px}
+.section__head p{font-size:18px;color:var(--ink-muted)}
+.section--deep .section__head p{color:var(--deep-muted)}
+.section__head--center{margin-inline:auto;text-align:center}
+
+/* ---------- Grade de cards ---------- */
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+@media (max-width:920px){.grid-3{grid-template-columns:1fr;max-width:520px;margin-inline:auto}}
+@media (max-width:760px){.grid-2{grid-template-columns:1fr}}
+
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-card);
+  padding:32px 30px 34px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.card__art{
+  width:82px;height:82px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  margin-bottom:6px;
+  flex:none;
+}
+.card__art img{width:58px;height:auto}
+.card h3{font-size:21px}
+.card p{color:var(--ink-muted);font-size:16px}
+.card__age{
+  font-family:var(--body);
+  font-size:12.5px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+/* ---------- Lista de sinais ---------- */
+/* Cartoes numa grade de 4 x 2. As linhas do grid tem altura igual, entao os
+   cartoes terminam alinhados mesmo com numero de linhas de texto diferente.
+   A versao anterior usava filete embaixo de cada item, e como cada item tinha
+   uma altura, os filetes nao batiam entre as colunas. */
+.signals{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-auto-rows:1fr;          /* todas as celulas com a mesma altura */
+  gap:16px;
+  margin-bottom:clamp(40px,5vw,60px);
+}
+@media (max-width:560px){.signals{grid-template-columns:1fr}}
+
+.signal{
+  background:rgba(247,242,238,.07);
+  border:1px solid rgba(247,242,238,.17);
+  border-radius:18px;
+  padding:22px 22px 24px;
+  color:var(--deep-ink);
+}
+.signal strong{
+  display:block;
+  font-family:var(--display);
+  font-size:17px;
+  font-weight:600;
+  line-height:1.3;
+  margin-bottom:6px;
+}
+.signal p{font-size:15px;color:var(--deep-muted);line-height:1.6}
+
+.note{
+  display:flex;
+  gap:18px;
+  align-items:center;
+  background:rgba(247,242,238,.08);
+  border:1px solid rgba(247,242,238,.18);
+  border-radius:var(--r-card);
+  padding:24px 28px;
+}
+.note img{width:66px;flex:none}
+.note p{font-size:16.5px;margin:0}
+
+/* ---------- Etapas ---------- */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:22px;
+  counter-reset:step;
+}
+@media (max-width:980px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+.step{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-card);
+  padding:30px 26px 32px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.step__n{
+  width:42px;height:42px;
+  border-radius:50%;
+  background:var(--halo);
+  color:var(--vinho);
+  display:grid;place-items:center;
+  font-family:var(--display);
+  font-weight:600;
+  font-size:17px;
+  margin-bottom:6px;
+}
+.step h3{font-size:18.5px}
+.step p{font-size:15.5px;color:var(--ink-muted)}
+
+/* ---------- Sobre ---------- */
+.about{
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(32px,5vw,64px);
+  align-items:start;
+}
+@media (max-width:900px){.about{grid-template-columns:1fr}}
+.about__portrait{
+  /* O texto do "Sobre mim" e bem mais alto que a foto. Centralizar deixaria o
+     retrato boiando com vazio em cima e embaixo; alinhar so no topo jogaria
+     todo o vazio para baixo. Fixando, ele alinha no topo e acompanha a
+     leitura. Precisa estar aqui, na regra base: uma regra separada antes
+     desta perde para o position:relative por ordem de cascata. */
+  position:sticky;
+  top:clamp(84px,11vh,112px);
+  border-radius:var(--r-card);
+  background:var(--menta);
+  aspect-ratio:4/5;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+.about__portrait img{width:74%}
+.about__portrait--foto{background:var(--surface-2)}
+.about__portrait--foto img{width:100%;height:100%;object-fit:cover}
+
+/* Em coluna unica nao ha texto ao lado para acompanhar, entao o retrato volta
+   ao fluxo normal. Precisa vir depois da regra base, senao perde por ordem. */
+@media (max-width:900px){
+  .about__portrait{position:static;top:auto}
+}
+.about__portrait figcaption{
+  position:absolute;
+  bottom:14px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,.9);
+  color:#71202E;
+  border-radius:var(--r-pill);
+  padding:7px 16px;
+  font-size:12.5px;
+  font-weight:600;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.about h2{font-size:clamp(29px,3.9vw,42px);margin-bottom:20px}
+.about p+p{margin-top:16px}
+.about p{color:var(--ink-muted);font-size:17px;max-width:60ch}
+.creds{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:28px;
+}
+
+/* ---------- Abordagem ---------- */
+.method{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px 40px;
+}
+@media (max-width:760px){.method{grid-template-columns:1fr}}
+.method__item{
+  display:flex;
+  gap:16px;
+  padding:22px 0;
+  border-top:1px solid var(--line);
+}
+.method__item span{
+  width:34px;height:34px;
+  border-radius:50%;
+  flex:none;
+  display:grid;place-items:center;
+  margin-top:2px;
+}
+.method__item h3{font-size:17.5px;margin-bottom:6px}
+.method__item p{font-size:15.5px;color:var(--ink-muted)}
+
+/* ---------- Avaliacoes do Google ---------- */
+.reviews__summary{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:clamp(18px,3vw,38px);
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-card);
+  padding:26px clamp(24px,3vw,36px);
+  margin-bottom:28px;
+  max-width:860px;
+  margin-inline:auto;
+}
+.reviews__score{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  font-family:var(--display);
+  color:var(--ink-strong);
+}
+.reviews__score b{font-size:44px;font-weight:600;line-height:1;letter-spacing:-.03em}
+.reviews__score span{font-size:16px;color:var(--ink-muted)}
+.reviews__meta{display:flex;flex-direction:column;gap:6px}
+.reviews__meta p{font-size:15px;color:var(--ink-muted)}
+.reviews__google{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink);
+}
+/* No desktop o botao ocupa uma linha propria e fica centralizado, em vez de
+   ser empurrado para a borda direita da faixa. */
+.reviews__cta{
+  flex-basis:100%;
+  display:flex;
+  justify-content:center;
+  margin-top:4px;
+}
+@media (max-width:760px){
+  .reviews__cta{margin-left:0;width:100%}
+  .reviews__cta .btn{width:100%}
+}
+
+/* Estrelas douradas, amarelo da paleta da marca */
+.stars{display:inline-flex;gap:3px;line-height:0}
+.stars svg{width:19px;height:19px;flex:none}
+.stars--sm svg{width:16px;height:16px}
+.stars__track{position:relative;display:inline-block;line-height:0}
+.stars__fill{position:absolute;inset:0;overflow:hidden;white-space:nowrap}
+
+/* Empilhados numa coluna unica. Com dois depoimentos de tamanhos muito
+   diferentes, lado a lado deixaria um cartao quase vazio ao lado de outro
+   cheio. A coluna tambem segura a medida de leitura, que em 1100px ficaria
+   larga demais. */
+.reviews__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:22px;
+  max-width:860px;
+  margin-inline:auto;
+}
+.review{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-card);
+  padding:26px 26px 28px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.review__head{display:flex;align-items:center;gap:13px}
+.review__avatar{
+  width:42px;height:42px;
+  border-radius:50%;
+  flex:none;
+  display:grid;place-items:center;
+  background:var(--menta);
+  color:var(--vinho);
+  font-family:var(--display);
+  font-weight:600;
+  font-size:17px;
+  overflow:hidden;
+}
+.review__avatar img{width:100%;height:100%;object-fit:cover}
+.review__who{display:flex;flex-direction:column;gap:5px;min-width:0}
+.review__who strong{
+  font-family:var(--display);
+  font-size:16px;
+  font-weight:600;
+  color:var(--ink-strong);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.review__who span{font-size:13px;color:var(--ink-muted)}
+.review p{font-size:16px;color:var(--ink);line-height:1.65}
+.review p + p{margin-top:14px}
+.review__source{
+  margin-top:auto;
+  padding-top:4px;
+  font-size:12.5px;
+  color:var(--ink-muted);
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.reviews__vazio{
+  background:var(--surface);
+  border:1px dashed var(--line-strong);
+  border-radius:var(--r-card);
+  padding:34px 30px;
+  text-align:center;
+  color:var(--ink-muted);
+  font-size:16px;
+}
+.reviews__vazio strong{display:block;color:var(--ink-strong);font-family:var(--display);font-size:18px;margin-bottom:8px}
+
+/* ---------- Benefícios ---------- */
+/* Duas colunas, nao tres. Com os textos longos, tres colunas davam uma medida
+   de 298px (cerca de 38 caracteres por linha): estreito demais para texto
+   justificado, o que abria vaos de quase o dobro do espaco normal, e criava
+   diferenca grande de sobra entre o cartao mais curto e o mais longo. */
+.benefits{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-auto-rows:1fr;          /* todos os cartoes com a mesma altura */
+  gap:22px;
+  margin-bottom:44px;
+}
+/* Abaixo de 900px duas colunas voltariam a ficar estreitas (cerca de 310px),
+   com o mesmo problema de justificacao. Vira coluna unica, e o cartao ganha
+   medida maxima para o texto nao esticar em telas de tablet. */
+@media (max-width:900px){
+  .benefits{grid-template-columns:1fr;justify-items:center}
+  .benefit{width:100%;max-width:620px}
+}
+
+.benefit{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-card);
+  padding:28px 26px 30px;
+  display:flex;
+  flex-direction:column;
+  gap:11px;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.benefit:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.benefit__ic{
+  width:44px;height:44px;
+  border-radius:14px;
+  display:grid;place-items:center;
+  margin-bottom:4px;
+  flex:none;
+}
+.benefit h3{
+  font-size:19px;
+  line-height:1.3;
+  text-wrap:balance;         /* equilibra as duas linhas sem esticar espacos */
+}
+
+/* Com duas colunas lado a lado, o bloco do titulo reserva duas linhas. Sem
+   isso, titulo de uma linha faz o texto comecar 22px mais alto que o do
+   cartao vizinho, e a fileira fica desalinhada. */
+@media (min-width:901px){
+  .benefit h3{min-height:calc(2 * 1.3em)}
+}
+.benefit p{font-size:15.5px;color:var(--ink-muted)}
+
+/* Faixa "para quem é" no fim dos benefícios */
+/* Com os textos longos, a ilustracao passou de ao lado para acima do texto.
+   Ao lado, a coluna de leitura caia para 277px, estreita demais para texto
+   justificado. Acima, a coluna inteira fica disponivel. */
+.who{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-auto-rows:1fr;          /* os tres blocos com a mesma altura */
+  gap:30px;
+  padding-top:38px;
+  border-top:1px solid var(--line);
+}
+@media (max-width:900px){
+  .who{grid-template-columns:1fr;gap:34px;justify-items:center}
+  .who__item{max-width:620px}
+}
+.who__item{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.who__art{
+  width:62px;height:62px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  flex:none;
+}
+.who__art img{width:42px;height:auto}
+.who__item h3{font-size:18px;line-height:1.3;text-wrap:balance;margin-bottom:7px}
+.who__item p{font-size:15px;color:var(--ink-muted);line-height:1.6}
+
+/* ---------- Reflexão ---------- */
+.reflect__lead{
+  font-family:var(--display);
+  font-size:clamp(19px,2.1vw,23px);
+  font-weight:500;
+  line-height:1.5;
+  color:var(--deep-ink);
+  letter-spacing:-.01em;
+}
+
+/* Fechamento: ilustracao, texto e botao numa faixa unica, para a secao
+   terminar ocupando a largura toda em vez de deixar um vazio a direita. */
+.reflect__close{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;
+  gap:clamp(20px,3vw,34px);
+  background:rgba(247,242,238,.07);
+  border:1px solid rgba(247,242,238,.17);
+  border-radius:var(--r-card);
+  padding:clamp(24px,3vw,34px) clamp(22px,3vw,38px);
+}
+/* A faixa cresceu junto com o texto. A ilustracao acompanha, senao fica
+   pequena demais para equilibrar a coluna da esquerda. */
+.reflect__close img{width:clamp(84px,9vw,116px);flex:none}
+.reflect__close p{font-size:16.5px;color:var(--deep-muted)}
+.reflect__close p + p{margin-top:12px}
+.reflect__close .btn{white-space:nowrap}
+@media (max-width:1000px){
+  .reflect__close{grid-template-columns:auto minmax(0,1fr);row-gap:24px}
+  .reflect__close .btn{grid-column:1 / -1;justify-self:start}
+}
+
+/* ---------- Depoimentos ---------- */
+.quote__mark{
+  font-family:var(--display);
+  font-size:52px;
+  line-height:.7;
+  color:var(--halo);
+  margin-bottom:2px;
+}
+.review__who strong{white-space:normal}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:820px;margin-inline:auto}
+.faq details{
+  border-bottom:1px solid var(--line);
+}
+.faq summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:24px 0;
+  cursor:pointer;
+  font-family:var(--display);
+  font-weight:500;
+  font-size:18px;
+  color:var(--ink-strong);
+  list-style:none;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"";
+  flex:none;
+  width:13px;height:13px;
+  border-right:2.5px solid var(--accent);
+  border-bottom:2.5px solid var(--accent);
+  transform:rotate(45deg) translateY(-3px);
+  transition:transform .2s ease;
+}
+.faq details[open] summary::after{transform:rotate(225deg) translateY(-3px)}
+.faq details p{
+  padding:0 0 26px;
+  color:var(--ink-muted);
+  font-size:16.5px;
+  max-width:70ch;
+}
+
+/* ---------- Malha do Instagram ---------- */
+.ig__head{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:16px;
+  margin-bottom:26px;
+}
+.ig__handle{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--display);
+  font-weight:600;
+  font-size:17px;
+  color:var(--ink-strong);
+  text-decoration:none;
+}
+.ig__handle:hover{color:var(--accent)}
+.ig__cta{margin-left:auto}
+@media (max-width:620px){
+  .ig__cta{margin-left:0;width:100%}
+  .ig__cta .btn{width:100%}
+}
+
+.ig__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+@media (max-width:620px){.ig__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+
+.ig__tile{
+  position:relative;
+  display:block;
+  aspect-ratio:1;
+  border-radius:20px;
+  overflow:hidden;
+  background:var(--surface-2);
+  border:1px solid var(--line);
+}
+.ig__tile img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .45s cubic-bezier(.22,.7,.3,1);
+}
+.ig__tile::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--vinho);
+  opacity:0;
+  transition:opacity .3s ease;
+}
+.ig__tile:hover img,.ig__tile:focus-visible img{transform:scale(1.06)}
+.ig__tile:hover::after,.ig__tile:focus-visible::after{opacity:.18}
+@media (prefers-reduced-motion:reduce){
+  .ig__tile img{transition:none}
+  .ig__tile:hover img,.ig__tile:focus-visible img{transform:none}
+}
+
+.ig__vazio{
+  background:var(--surface);
+  border:1px dashed var(--line-strong);
+  border-radius:var(--r-card);
+  padding:34px 30px;
+  text-align:center;
+  color:var(--ink-muted);
+  font-size:16px;
+}
+.ig__vazio strong{display:block;color:var(--ink-strong);font-family:var(--display);font-size:18px;margin-bottom:8px}
+
+/* ---------- CTA final ---------- */
+.cta{
+  background:var(--deep);
+  color:var(--deep-ink);
+  border-radius:var(--r-card);
+  padding:clamp(40px,6vw,68px) clamp(28px,5vw,64px);
+  position:relative;
+  overflow:hidden;
+}
+.cta__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);
+  gap:clamp(30px,4vw,56px);
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+@media (max-width:860px){.cta__grid{grid-template-columns:1fr}}
+.cta h2{font-size:clamp(28px,3.8vw,42px);color:var(--deep-ink);margin-bottom:16px}
+.cta p{color:var(--deep-muted);font-size:17.5px;max-width:52ch;margin-bottom:30px}
+.cta__buttons{display:flex;flex-wrap:wrap;gap:14px}
+.cta__art{display:grid;place-items:center}
+.cta__art img{
+  width:min(78%,240px);
+  aspect-ratio:1;
+  object-fit:cover;
+  border-radius:50%;
+  /* anel claro para a foto nao encostar direto no vinho do fundo */
+  border:4px solid rgba(247,242,238,.22);
+  box-shadow:0 10px 30px rgba(0,0,0,.22);
+}
+@media (max-width:860px){
+  /* no celular a foto vem antes do texto: rosto, convite, botao */
+  .cta__art{order:-1;margin-bottom:6px}
+  .cta__art img{width:150px;border-width:3px}
+}
+
+
+/* ---------- Mapa do consultório ---------- */
+.mapa{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-card);
+  overflow:hidden;
+}
+.mapa__moldura{
+  position:relative;
+  aspect-ratio:16/9;
+  background:var(--menta);
+}
+@media (max-width:760px){.mapa__moldura{aspect-ratio:4/3}}
+
+.mapa__moldura iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+/* Reserva: ocupa a mesma area, atras do iframe.
+   O mapa da pagina e um iframe do Google, e iframe nao carrega em todo lugar:
+   o visualizador de artifacts bloqueia por politica de conteudo, e bloqueador
+   de anuncios ou rede corporativa tambem podem barrar. Nesses casos aparece
+   esta imagem, um mapa estatico do mesmo ponto gerado por gerar_mapa.py, em
+   vez de um retangulo vazio. */
+.mapa__reserva{
+  position:absolute;
+  inset:0;
+  z-index:1;                 /* acima do iframe, nao atras */
+}
+.mapa__reserva img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.mapa__info{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:18px;
+  padding:22px clamp(20px,3vw,30px) 24px;
+  border-top:1px solid var(--line);
+}
+.mapa__info strong{
+  display:block;
+  font-family:var(--display);
+  font-size:17px;
+  font-weight:600;
+  color:var(--ink-strong);
+  margin-bottom:4px;
+}
+.mapa__info p{font-size:15px;color:var(--ink-muted);line-height:1.5}
+.mapa__info .btn{margin-left:auto}
+@media (max-width:620px){
+  .mapa__info{flex-direction:column;align-items:stretch;text-align:center}
+  .mapa__info .btn{margin-left:0;width:100%}
+}
+
+/* ---------- Rodapé ---------- */
+.footer{
+  border-top:1px solid var(--line);
+  padding:clamp(44px,6vw,64px) 0 clamp(28px,3vw,36px);
+  background:var(--ground);
+}
+
+/* Tres colunas: a da marca tem mais medida porque carrega um paragrafo.
+   O mesmo gap horizontal e vertical mantem o ritmo quando as colunas
+   reempilham em telas menores. */
+.footer__grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1.15fr;
+  gap:clamp(32px,5vw,60px);
+  align-items:start;
+  padding-bottom:clamp(34px,4vw,46px);
+}
+@media (max-width:900px){
+  .footer__grid{grid-template-columns:1fr 1fr;row-gap:40px}
+  .footer__marca{grid-column:1 / -1}
+}
+@media (max-width:560px){
+  .footer__grid{grid-template-columns:1fr;row-gap:34px}
+}
+
+.footer__marca img{height:52px;width:auto}
+.footer__marca p{font-size:14px;color:var(--ink-muted);line-height:1.6;max-width:38ch}
+.footer__crp{
+  margin:14px 0 10px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.1em;
+  color:var(--ink-strong);
+}
+
+/* O titulo da coluna alinha com o topo do logotipo, para as tres colunas
+   comecarem na mesma linha. */
+.footer__titulo{
+  font-family:var(--body);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin:0 0 16px;
+  line-height:1.6;
+}
+.footer__col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.footer__col a,
+.footer__endereco{
+  display:inline-flex;
+  align-items:flex-start;
+  gap:9px;
+  font-size:14.5px;
+  line-height:1.5;
+  color:var(--ink);
+  text-decoration:none;
+}
+.footer__col a svg,
+.footer__endereco svg{flex:none;margin-top:2px;color:var(--ink-muted)}
+.footer__col a{transition:color .18s ease}
+.footer__col a:hover{color:var(--accent)}
+.footer__col a:hover svg{color:var(--accent)}
+.footer__endereco{color:var(--ink-muted)}
+
+/* Faixa inferior: mesma medida da grade acima, separada por um filete. */
+.footer__base{
+  border-top:1px solid var(--line);
+  padding-top:22px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 32px;
+  justify-content:space-between;
+  align-items:baseline;
+}
+.footer__base p{font-size:13px;color:var(--ink-muted);line-height:1.6}
+
+@media (max-width:760px){
+  /* em coluna unica tudo centraliza, como no resto do mobile */
+  .footer__marca,
+  .footer__col{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .footer__marca p{max-width:42ch}
+  .footer__col ul{align-items:center}
+  .footer__base{flex-direction:column;align-items:center;text-align:center;gap:10px}
+}
+
+/* ---------- Revelação ao rolar ---------- */
+/* Sem JS (ou se o script falhar) o conteudo aparece normalmente:
+   a classe .js so e adicionada pelo script. */
+.js .reveal{opacity:0;transform:translateY(20px)}
+.js .reveal.is-in{opacity:1;transform:none;transition:opacity .6s ease, transform .6s cubic-bezier(.22,.7,.3,1)}
+@media (prefers-reduced-motion:reduce){
+  .js .reveal{opacity:1;transform:none}
+  .js .reveal.is-in{transition:none}
+}
+
+/* ---------- Aviso de cookies ---------- */
+.cookies{
+  position:fixed;
+  left:20px;
+  bottom:20px;
+  z-index:70;
+  width:min(440px, calc(100vw - 40px));
+  background:var(--surface);
+  border:1px solid var(--line-strong);
+  border-radius:var(--r-card);
+  box-shadow:var(--shadow-lg);
+  padding:22px 24px 24px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.cookies strong{
+  display:block;
+  font-family:var(--display);
+  font-size:17px;
+  font-weight:600;
+  color:var(--ink-strong);
+  margin-bottom:7px;
+}
+.cookies p{font-size:14.5px;line-height:1.55;color:var(--ink-muted)}
+.cookies__acoes{display:flex;gap:10px;flex-wrap:wrap}
+.cookies__acoes .btn{flex:1;padding:12px 18px;font-size:14.5px;min-width:120px}
+
+/* enquanto o aviso esta na tela, o balao do WhatsApp sobe para nao ficar
+   escondido atras dele no celular */
+@media (max-width:760px){
+  .cookies{left:12px;right:12px;bottom:12px;width:auto;padding:20px}
+  html.tem-aviso-cookies .wa-float{bottom:calc(26px + var(--altura-aviso, 190px))}
+}
+
+/* Botão flutuante de WhatsApp */
+.wa-float{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:60;
+  width:58px;height:58px;
+  border-radius:50%;
+  background:#25D366;
+  display:grid;place-items:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.22);
+  transition:transform .18s ease;
+}
+.wa-float:hover{transform:scale(1.07)}
+@media (max-width:900px){.wa-float{width:52px;height:52px;right:16px;bottom:16px}}
+/* ============================================================
+   MOBILE: titulos, botoes e cartoes centralizados
+
+   Este bloco fica no FIM do CSS de proposito. Ele sobrescreve
+   propriedades definidas nas regras de componente (por exemplo o
+   align-items do .who__item), e como a especificidade e a mesma,
+   quem decide e a ordem: precisa vir depois. Se mover isto para
+   cima, a centralizacao do mobile para de funcionar.
+
+   O texto corrido continua justificado: a regra "main p" e
+   aplicada direto no paragrafo e por isso vence a centralizacao
+   herdada do cartao.
+   ============================================================ */
+@media (max-width:760px){
+
+  /* titulos de secao e rotulos */
+  main .eyebrow,
+  main h1,
+  main h2{text-align:center}
+  .section__head{margin-inline:auto;text-align:center}
+  .hero__lede{margin-inline:auto}
+
+  /* botoes e pilulas */
+  .hero__cta,
+  .cta__buttons,
+  .chips,
+  .creds,
+  .ig__head,
+  .reviews__summary{justify-content:center}
+  .reflect__close{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .reflect__close .btn{justify-self:center}
+  .reviews__meta{align-items:center}
+
+  /* cartoes de beneficio e etapas */
+  .benefit,
+  .step{align-items:center;text-align:center}
+
+  /* faixa de faixa etaria e orientacao parental:
+     empilha, centraliza a imagem e centraliza o rotulo e o titulo */
+  .who__item{flex-direction:column;align-items:center;text-align:center}
+  /* o :not e necessario: o circulo da imagem tambem e um div filho,
+     e sem isso ele seria esticado para a largura toda */
+  .who__item > div:not(.who__art){width:100%}
+
+  /* depoimentos */
+  .review{align-items:center;text-align:center}
+  .review__head,
+  .review__source{justify-content:center}
+  .review__who{align-items:center}
+
+  /* contato e rodape */
+
+  /* estes rotulos sao forcados a esquerda na versao desktop;
+     no mobile precisam acompanhar a centralizacao */
+  .review__who span,
+  .reviews__meta p,
+}
+
+
+/* Titulos de cartao e perguntas do FAQ tambem entram justificados quando
+   ocupam mais de uma linha. Fica fora do mobile porque abaixo de 760px esses
+   blocos sao centralizados. */
+/* A pergunta do FAQ nao e centralizada no mobile, entao pode ser justificada
+   em qualquer largura. */
+.faq__q{
+  flex:1;
+  text-align:justify;
+  text-justify:inter-word;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+}
+
+/* Ja o titulo do cartao e centralizado abaixo de 760px, entao so entra
+   justificado a partir do desktop. */
+@media (min-width:761px){
+  /* O titulo do cartao ficou de fora da justificacao. Em duas linhas de
+     medida curta, justificar tipografia de titulo abria vaos de 24 a 42px
+     entre palavras, contra 3,9px do normal. O text-wrap:balance resolve o
+     mesmo problema pelo caminho certo: equilibra o tamanho das linhas sem
+     esticar espaco nenhum. */
+  .benefit h3{text-align:center}
+  .benefit__ic{margin-inline:auto}
+}
+
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Psychologist",
+  "name": "Rafaella Rodrigues · Psicóloga Infantojuvenil",
+  "description": "Psicóloga infantojuvenil na Barra da Tijuca, Rio de Janeiro. Atendimento acolhedor para crianças e adolescentes em TCC e ABA, com orientação para pais.",
+  "url": "https://SEUDOMINIO.com.br/",
+  "telephone": "+5521969025509",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. das Américas, 13.685",
+    "addressLocality": "Rio de Janeiro",
+    "postalCode": "22785-620",
+    "addressRegion": "RJ",
+    "addressCountry": "BR"
+  },
+  "areaServed": "Rio de Janeiro, RJ"
+}
+</script>
+</head>
+<body>
+
+
+<!-- =========================================================
+     NAVEGAÇÃO
+     ========================================================= -->
+<header class="nav" id="nav" lang="pt-BR">
+  <div class="wrap nav__inner">
+    <a class="nav__logo" href="#topo" aria-label="Rafaella Rodrigues, Psicóloga Infantojuvenil, início">
+      <img src="assets/logo_horizontal.png" alt="Rafaella Rodrigues, Psicóloga Infantojuvenil">
+      <span class="nav__crp">CRP 05/69028</span>
+    </a>
+
+    <button class="nav__toggle" id="navToggle" type="button"
+            aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu">
+      <span class="nav__burger" aria-hidden="true"></span>
+    </button>
+
+    <div class="nav__menu" id="navMenu">
+      <nav class="nav__links" aria-label="Seções do site">
+        <a href="#sobre">Sobre mim</a>
+        <a href="#depoimentos">Depoimentos</a>
+        <a href="#duvidas">Perguntas frequentes</a>
+      </nav>
+      <a class="btn btn--primary" href="https://wa.me/5521969025509" target="_blank" rel="noopener">
+        Agendar conversa
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="topo" lang="pt-BR">
+
+<!-- =========================================================
+     1. PROPOSTA
+     ========================================================= -->
+<section class="hero">
+  <div class="hero__blobs" aria-hidden="true">
+    <span class="b1"></span><span class="b2"></span><span class="b3"></span>
+  </div>
+  <div class="wrap hero__grid">
+    <div>
+      <p class="eyebrow">Psicologia infantojuvenil · Barra da Tijuca, Rio de Janeiro</p>
+      <h1>Um espaço seguro onde seu filho aprende a lidar com o que sente enquanto <span class="mark">se desenvolve</span></h1>
+      <p class="hero__lede">
+        Atendimento psicológico infantojuvenil e intervenção baseada em ABA para crianças
+        atípicas. Aqui, cada caminho é construído e percorrido junto com a família e a escola,
+        respeitando as necessidades e potencialidades de cada criança.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="https://wa.me/5521969025509" target="_blank" rel="noopener">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+          Conversar no WhatsApp
+        </a>
+      </div>
+      <div class="chips">
+        <span class="chip"><i style="background:var(--menta)"></i>Atendimento online e presencial</span>
+        <span class="chip"><i style="background:var(--rosa)"></i>Crianças e adolescentes</span>
+        <span class="chip"><i style="background:var(--amarelo)"></i>Abordagens baseadas em evidências</span>
+      </div>
+    </div>
+
+    <div class="hero__badge">
+      <img src="assets/logo_badge.png" alt="Selo da marca Rafaella Rodrigues, Psicóloga Infantojuvenil">
+      <img class="float float--a" src="assets/char_heart.png" alt="" aria-hidden="true">
+      <img class="float float--b" src="assets/char_brain.png" alt="" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     2. BENEFÍCIOS
+     ========================================================= -->
+<section class="section section--tinted" id="beneficios">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">O que a terapia pode trazer</p>
+      <h2>Cada processo é único, e eu enxergo oportunidades de ensino onde existem desafios.</h2>
+      <p>Mais do que olhar para um diagnóstico, o meu trabalho é conhecer quem está por trás
+        dele. Com um olhar individualizado, identifico potencialidades, necessidades e
+        oportunidades de aprendizagem para construir, junto à criança, à família e à escola,
+        caminhos que façam sentido para cada processo. E isso pode envolver:</p>
+    </div>
+
+    <div class="benefits">
+      <article class="benefit reveal">
+        <div class="benefit__ic" style="background:var(--menta)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#71202E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7.5 3c0 5.4-7.5 10-7.5 10Z"/></svg>
+        </div>
+        <h3>Aprender a reconhecer e lidar com emoções como raiva, medo e ansiedade</h3>
+        <p>Crianças nem sempre conseguem compreender ou explicar o que estão sentindo. Vemos o comportamento da raiva, por exemplo, mas será que estamos vendo a emoção por trás dele? Na terapia, trabalhamos para que ela reconheça e nomeie suas emoções, compreenda o que acontece antes e depois delas e desenvolva estratégias mais assertivas para lidar com situações difíceis.</p>
+      </article>
+
+      <article class="benefit reveal">
+        <div class="benefit__ic" style="background:var(--rosa)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#71202E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M2.6 19.8a6.4 6.4 0 0 1 12.8 0"/><circle cx="17.6" cy="9.6" r="2.4"/><path d="M16.2 14.9a5.2 5.2 0 0 1 5.2 4.9"/></svg>
+        </div>
+        <h3>Desenvolver habilidades sociais e fortalecer as relações</h3>
+        <p>A falta dessas habilidades pode refletir em afastamento social, brigas excessivas ou até mesmo em uma visão negativa de si mesma. A terapia pode ajudar a criança a desenvolver recursos para iniciar e manter interações, esperar sua vez, pedir ajuda, lidar com conflitos e construir relações mais funcionais com outras crianças e adultos.</p>
+      </article>
+
+      <article class="benefit reveal">
+        <div class="benefit__ic" style="background:var(--azul)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#71202E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.2 17.5a7.8 7.8 0 1 1 15.6 0"/><path d="M12 17.5 16.6 12.9"/><circle cx="12" cy="17.5" r="1.4"/></svg>
+        </div>
+        <h3>Ampliar a tolerância à frustração</h3>
+        <p>Ouvir um “não”, perder uma brincadeira ou precisar interromper algo de que gosta pode ser especialmente difícil para algumas crianças. O trabalho terapêutico busca dar suporte para esse cérebro que ainda está em desenvolvimento, respeitando o desenvolvimento da criança, sua capacidade de lidar com frustrações, desenvolvendo estratégias para compreender e enfrentar esses momentos.</p>
+      </article>
+
+      <article class="benefit reveal">
+        <div class="benefit__ic" style="background:var(--amarelo)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#71202E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.2A8 8 0 0 0 6.4 6.4L3.6 9.1"/><path d="M3.6 4.6v4.5h4.5"/><path d="M4 12.8a8 8 0 0 0 13.6 4.8l2.8-2.7"/><path d="M20.4 19.4v-4.5h-4.5"/></svg>
+        </div>
+        <h3>Aprender a lidar com mudanças e situações novas</h3>
+        <p>Mudanças na rotina, novos ambientes, pessoas diferentes ou situações desconhecidas podem gerar insegurança e mudanças de comportamento. Na terapia, a criança pode aprender, brincando, a entender o que está acontecendo, se preparar para essas mudanças e encontrar formas de lidar melhor com aquilo que é novo.</p>
+      </article>
+
+      <article class="benefit reveal">
+        <div class="benefit__ic" style="background:var(--menta)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#71202E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6.8h10"/><path d="M10 12h10"/><path d="M10 17.2h6.5"/><path d="m3.6 6.6 1.5 1.5 2.5-2.7"/><path d="m3.6 11.8 1.5 1.5 2.5-2.7"/></svg>
+        </div>
+        <h3>Desenvolver mais autonomia no dia a dia</h3>
+        <p>Autonomia não acontece de uma hora para outra. Ela é construída a partir de pequenos passos. O trabalho terapêutico pode favorecer habilidades para que a criança participe cada vez mais dos seus cuidados pessoais, da organização e de outras atividades da rotina, sempre considerando suas necessidades e seu momento de desenvolvimento. Cada conquista também pode fortalecer a percepção de “eu sou capaz”, ajudando a criança a reconhecer suas próprias habilidades.</p>
+      </article>
+
+      <article class="benefit reveal">
+        <div class="benefit__ic" style="background:var(--rosa)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#71202E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="5.4" width="18.4" height="13.2" rx="2.4"/><path d="M8.9 5.4v13.2"/><path d="M15.1 5.4v13.2"/><path d="M2.8 12h18.4"/></svg>
+        </div>
+        <h3>Aprender novas formas de se comunicar e expressar necessidades</h3>
+        <p>Não saber como falar não significa que ela não tenha o que comunicar. Quando a criança não consegue comunicar o que quer, precisa ou sente, isso pode aparecer nos comportamentos. Na terapia, podemos utilizar a Comunicação Aumentativa e Alternativa (CAA) como recurso para ampliar essas possibilidades de expressão, permitindo que a criança possa pedir, recusar, escolher, fazer comentários, expressar sentimentos e comunicar o que precisa.</p>
+      </article>
+    </div>
+
+    <div class="who reveal">
+      <div class="who__item">
+        <div class="who__art" style="background:var(--menta)">
+          <!-- Quebra-cabeca de quatro pecas, conforme referencia do cliente.
+               E uma peca so, girada 90 graus quatro vezes: o pino de cada uma
+               entra no encaixe da vizinha, e os pinos externos formam um moinho
+               (azul em cima, amarelo a direita, verde embaixo, vermelho a
+               esquerda). Cores da referencia, nao da paleta da marca. -->
+          <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true">
+            <g transform="rotate(0 12 12)"><path d="M3 3 H5.6 a1.9 1.9 0 0 0 3.8 0 H12 V5.6 a1.9 1.9 0 0 1 0 3.8 V12 H9.4 a1.9 1.9 0 0 1 -3.8 0 H3 Z" fill="#2196F3"/></g>  <!-- azul -->
+            <g transform="rotate(90 12 12)"><path d="M3 3 H5.6 a1.9 1.9 0 0 0 3.8 0 H12 V5.6 a1.9 1.9 0 0 1 0 3.8 V12 H9.4 a1.9 1.9 0 0 1 -3.8 0 H3 Z" fill="#FFCF2E"/></g>  <!-- amarelo -->
+            <g transform="rotate(180 12 12)"><path d="M3 3 H5.6 a1.9 1.9 0 0 0 3.8 0 H12 V5.6 a1.9 1.9 0 0 1 0 3.8 V12 H9.4 a1.9 1.9 0 0 1 -3.8 0 H3 Z" fill="#82BC28"/></g>  <!-- verde -->
+            <g transform="rotate(270 12 12)"><path d="M3 3 H5.6 a1.9 1.9 0 0 0 3.8 0 H12 V5.6 a1.9 1.9 0 0 1 0 3.8 V12 H9.4 a1.9 1.9 0 0 1 -3.8 0 H3 Z" fill="#D8232A"/></g>  <!-- vermelho -->
+          </svg>
+        </div>
+        <div>
+          <h3>Intervenção ABA</h3>
+          <p>Para o desenvolvimento de crianças atípicas, a intervenção baseada em ABA trabalha o ensino de novas habilidades, a redução de comportamentos que interferem na aprendizagem e a generalização dessas aprendizagens para diferentes ambientes. O trabalho envolve acompanhamento terapêutico (AT) e orientação parental, para que os objetivos trabalhados também façam parte da rotina da criança.</p>
+        </div>
+      </div>
+      <div class="who__item">
+        <div class="who__art" style="background:var(--rosa)"><img src="assets/char_heart.png" alt=""></div>
+        <div>
+          <h3>Psicoterapia Infantojuvenil</h3>
+          <p>Um espaço para a criança ou adolescente compreender melhor o que está acontecendo, aprender novas formas de lidar com suas emoções, comportamentos e relações e desenvolver recursos para enfrentar os desafios do dia a dia.</p>
+        </div>
+      </div>
+      <div class="who__item">
+        <div class="who__art" style="background:var(--azul)"><img src="assets/char_bubble.png" alt=""></div>
+        <div>
+          <h3>Orientação Parental</h3>
+          <p>A família não é detalhe, é peça fundamental! Os encontros com os pais são um espaço para ouvir, compreender os comportamentos da criança, ajustar estratégias e pensar em formas de organizar a rotina. O objetivo é favorecer mudanças que possam ser construídas e mantidas também fora do consultório.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     3. SOBRE
+     ========================================================= -->
+<section class="section" id="sobre">
+  <div class="wrap about">
+    <figure class="about__portrait about__portrait--foto reveal" style="margin:0">
+      <img src="assets/rafaella.jpg" alt="Rafaella Rodrigues, psicóloga infantojuvenil">
+    </figure>
+
+    <div class="reveal">
+      <p class="eyebrow">Sobre mim</p>
+      <h2>Oi, eu sou a Rafaella.</h2>
+      <p>
+        Se você chegou até aqui, provavelmente vem observando seu filho com atenção e com
+        alguma preocupação. Quero começar dizendo o mais importante: procurar ajuda não é
+        sinal de que algo deu errado na criação. É sinal de cuidado.
+      </p>
+      <p>
+        Sou psicóloga com atuação dedicada ao público infantojuvenil. Escolhi esse caminho
+        porque acredito que crianças e adolescentes merecem ser levados a sério no que sentem,
+        mesmo quando ainda não têm palavras para explicar. No consultório, o brincar não é
+        passatempo: é a forma mais honesta que uma criança tem de contar o que vive.
+      </p>
+      <p>
+        No caso do desenvolvimento atípico, esse olhar cuidadoso e científico também se traduz
+        na intervenção baseada em ABA, que pode acontecer para além do espaço clínico. Com o
+        acompanhamento de um AT (Acompanhante Terapêutico), as estratégias são levadas para
+        ambientes como casa, escola e outros contextos da rotina da criança, favorecendo
+        aprendizagens mais funcionais, autonomia e participação no dia a dia.
+      </p>
+      <p>
+        Meu trabalho é orientado por práticas baseadas em evidências científicas, principalmente
+        a Terapia Cognitivo-Comportamental (TCC) e a Análise do Comportamento Aplicada (ABA).
+        O objetivo é olhar para cada criança de forma individualizada, considerando suas
+        necessidades, potencialidades e contexto, sempre em parceria com a família e, quando
+        necessário, com a escola e os demais profissionais que fazem parte desse caminho.
+      </p>
+      <p>
+        Você não precisa chegar com tudo organizado na cabeça, nem saber explicar direito o que
+        está acontecendo. Basta chegar. O resto a gente entende junto.
+      </p>
+
+      <div class="creds">
+        <span class="chip"><i style="background:var(--vinho)"></i>CRP 05/69028</span>
+        <span class="chip"><i style="background:var(--menta)"></i>TCC e ABA</span>
+        <span class="chip"><i style="background:var(--azul)"></i>Barra da Tijuca · Rio de Janeiro</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     4. REFLEXÃO
+     ========================================================= -->
+<section class="section section--deep" id="reflexao">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow eyebrow--onDeep">Talvez você esteja percebendo</p>
+      <h2>Quando você sente que alguma coisa mudou.</h2>
+      <p class="reflect__lead">
+        Nem sempre é fácil entender o que está acontecendo com uma criança. Às vezes, ela
+        muda o comportamento, fica mais irritada, se afasta, começa a ter dificuldades na
+        escola ou passa a reagir de um jeito que você não reconhece. E, muitas vezes, surge
+        a dúvida: “Será que é só uma fase?”
+      </p>
+    </div>
+
+    <div class="signals">
+      <div class="signal reveal">
+        <strong>Mudanças de comportamento</strong>
+        <p>Irritabilidade, choro, sensibilidade, crises ou reações que você não reconhece.</p>
+      </div>
+      <div class="signal reveal">
+        <strong>Desafios na rotina</strong>
+        <p>Sono, alimentação, escola, mudanças ou situações que passaram a ser mais difíceis.</p>
+      </div>
+      <div class="signal reveal">
+        <strong>Dificuldades nas relações</strong>
+        <p>Afastamento, conflitos, dificuldade para fazer amigos ou manter interações.</p>
+      </div>
+      <div class="signal reveal">
+        <strong>Você não sabe mais como ajudar</strong>
+        <p>Já tentou diferentes estratégias, mas sente que precisa compreender melhor o que está acontecendo.</p>
+      </div>
+    </div>
+
+    <div class="reflect__close reveal">
+      <img src="assets/char_bubble.png" alt="" aria-hidden="true">
+      <div>
+        <p>
+          Nenhum desses sinais, sozinho, define um diagnóstico. Mas quando algumas
+          dificuldades começam a aparecer com frequência ou interferem na rotina, nas
+          relações ou na escola, pode ser importante olhar com mais atenção para o que
+          está acontecendo.
+        </p>
+        <p>
+          Nem sempre é fácil entender o que uma criança está vivendo ou saber qual é a
+          melhor forma de ajudar. A terapia pode ser um espaço para compreender essas
+          dificuldades junto com a família e construir, aos poucos, novas formas de lidar
+          com elas.
+        </p>
+        <p>Você não precisa ter todas as respostas. Conversar também é um primeiro passo.</p>
+      </div>
+      <a class="btn btn--onDeep" href="https://wa.me/5521969025509" target="_blank" rel="noopener">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+        Conversar no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     5. DEPOIMENTOS
+     Conteúdo gerado por build.py a partir de avaliacoes.json
+     ========================================================= -->
+<section class="section" id="depoimentos">
+  <div class="wrap">
+    <div class="section__head section__head--center reveal">
+      <p class="eyebrow">Depoimentos</p>
+      <h2>O que as famílias contam.</h2>
+      <p>Publicados com a identidade preservada.</p>
+    </div>
+    <div class="reviews__summary reveal">
+      <div class="reviews__score"><b>5,0</b><span>de 5</span></div>
+      <div class="reviews__meta">
+        <span class="stars" role="img" aria-label="5.0 de 5 estrelas"><span class="stars__track"><span class="stars " aria-hidden="true"><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg></span><span class="stars__fill" style="width:107.00px"><span class="stars " aria-hidden="true"><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg></span></span></span></span>
+        <p>21 avaliações no Google</p>
+      </div>
+      <span class="reviews__google"><svg width="15" height="15" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.5h12.1c-.2 2-1.6 5-4.5 7l6.9 5.4c4.1-3.8 6.6-9.4 6.6-15.9z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-7.1 5.5C8 41.3 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.5 28.4c-.5-1.4-.7-2.9-.7-4.4s.3-3 .7-4.4l-7.1-5.5C2.9 17 2 20.4 2 24s.9 7 2.4 9.9z"/><path fill="#EA4335" d="M24 10.5c4.1 0 6.9 1.8 8.5 3.3l6.2-6C34.9 4.4 29.9 2 24 2 15.4 2 8 6.7 4.4 14.1l7.1 5.5c1.8-5.3 6.7-9.1 12.5-9.1z"/></svg> Publicadas no perfil do Google</span>
+      <div class="reviews__cta">
+        <a class="btn btn--ghost" href="https://share.google/rY2mr2Bo883o5oMmp" target="_blank" rel="noopener">Ver todas no Google</a>
+      </div>
+    </div>
+    <div class="reviews__grid">
+      <article class="review reveal">
+        <div class="review__head">
+          <div class="review__avatar">L</div>
+          <div class="review__who">
+            <strong>Lavynia</strong>
+            <span class="stars stars--sm" role="img" aria-label="5.0 de 5 estrelas"><span class="stars__track"><span class="stars stars--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg></span><span class="stars__fill" style="width:92.00px"><span class="stars stars--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg></span></span></span></span>
+          </div>
+        </div>
+        <p>Encontrar a Rafa foi um divisor de águas para nós. Meu filho criou um vínculo muito bonito com ela, e cada sessão trouxe avanços que fizeram diferença no nosso dia a dia. Além de uma excelente profissional, ela é extremamente humana, acolhedora e atenciosa. Super indico!!! 😍</p>
+        <div class="review__source"><svg width="15" height="15" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.5h12.1c-.2 2-1.6 5-4.5 7l6.9 5.4c4.1-3.8 6.6-9.4 6.6-15.9z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-7.1 5.5C8 41.3 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.5 28.4c-.5-1.4-.7-2.9-.7-4.4s.3-3 .7-4.4l-7.1-5.5C2.9 17 2 20.4 2 24s.9 7 2.4 9.9z"/><path fill="#EA4335" d="M24 10.5c4.1 0 6.9 1.8 8.5 3.3l6.2-6C34.9 4.4 29.9 2 24 2 15.4 2 8 6.7 4.4 14.1l7.1 5.5c1.8-5.3 6.7-9.1 12.5-9.1z"/></svg> Publicado no Google</div>
+      </article>
+      <article class="review reveal">
+        <div class="review__head">
+          <div class="review__avatar">J</div>
+          <div class="review__who">
+            <strong>Joice</strong>
+            <span class="stars stars--sm" role="img" aria-label="5.0 de 5 estrelas"><span class="stars__track"><span class="stars stars--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#E3DBD2" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg></span><span class="stars__fill" style="width:92.00px"><span class="stars stars--sm" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg><svg viewBox="0 0 24 24" fill="#EDBA3D" aria-hidden="true"><path d="M12 2.6l2.7 5.9 6.4.7-4.8 4.4 1.3 6.3L12 16.7 6.4 19.9l1.3-6.3L2.9 9.2l6.4-.7z"/></svg></span></span></span></span>
+          </div>
+        </div>
+        <p>Existem profissionais que exercem uma profissão, e existem aqueles que transformam vidas. Você faz parte desse segundo grupo. É emocionante ver o amor, a dedicação, a paciência e o respeito com que cuida de cada criança autista, enxergando muito além dos desafios e valorizando cada pequena conquista.</p>
+        <p>Seu trabalho oferece esperança às famílias, fortalece a autoestima das crianças e mostra que, com acolhimento, conhecimento e compromisso, é possível abrir caminhos para um desenvolvimento cheio de possibilidades. Cada sorriso, cada evolução e cada passo conquistado também carregam um pouco da sua dedicação.</p>
+        <p>Que você nunca duvide da importância do que faz. O impacto do seu trabalho permanece na vida de muitas crianças e famílias, deixando marcas de carinho, confiança e transformação. Parabéns por ser uma profissional tão humana, competente e inspiradora. O mundo precisa de mais pessoas como você.</p>
+        <div class="review__source"><svg width="15" height="15" viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-2.8-.4-4H24v7.5h12.1c-.2 2-1.6 5-4.5 7l6.9 5.4c4.1-3.8 6.6-9.4 6.6-15.9z"/><path fill="#34A853" d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.4c-1.9 1.3-4.4 2.2-7.6 2.2-5.8 0-10.7-3.8-12.5-9.1l-7.1 5.5C8 41.3 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.5 28.4c-.5-1.4-.7-2.9-.7-4.4s.3-3 .7-4.4l-7.1-5.5C2.9 17 2 20.4 2 24s.9 7 2.4 9.9z"/><path fill="#EA4335" d="M24 10.5c4.1 0 6.9 1.8 8.5 3.3l6.2-6C34.9 4.4 29.9 2 24 2 15.4 2 8 6.7 4.4 14.1l7.1 5.5c1.8-5.3 6.7-9.1 12.5-9.1z"/></svg> Publicado no Google</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     6. DÚVIDAS
+     ========================================================= -->
+<section class="section section--tinted" id="duvidas">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Como funciona</p>
+      <h2>Do primeiro contato ao acompanhamento.</h2>
+      <p>Você sabe o que esperar em cada etapa. Nada é feito sem que a família compreenda e concorde com o caminho.</p>
+    </div>
+
+    <div class="steps" style="margin-bottom:clamp(48px,6vw,72px)">
+      <article class="step reveal">
+        <div class="step__n">1</div>
+        <h3>Primeiro contato</h3>
+        <p>Você me escreve pelo WhatsApp contando brevemente o que está acontecendo. Respondo com as informações sobre horários, valores e formato de atendimento.</p>
+      </article>
+      <article class="step reveal">
+        <div class="step__n">2</div>
+        <h3>Entrevista com os pais</h3>
+        <p>Antes de atender a criança, converso com os responsáveis para conhecer a história, a rotina e as principais preocupações da família.</p>
+      </article>
+      <article class="step reveal">
+        <div class="step__n">3</div>
+        <h3>Sessões e vínculo</h3>
+        <p>Começam os encontros semanais. As primeiras sessões são dedicadas a construir confiança e entender, no ritmo da criança, o que ela precisa elaborar.</p>
+      </article>
+      <article class="step reveal">
+        <div class="step__n">4</div>
+        <h3>Devolutivas periódicas</h3>
+        <p>De tempos em tempos, retomamos com a família o que está sendo trabalhado e o que pode ser sustentado em casa e na escola, sempre preservando o sigilo do que é da criança.</p>
+      </article>
+    </div>
+
+    <div class="section__head section__head--center reveal">
+      <h2 style="font-size:clamp(25px,3.2vw,34px)">Perguntas frequentes</h2>
+    </div>
+
+    <div class="faq reveal">
+      <details>
+        <summary><span class="faq__q">Como funciona a terapia com criança, na prática?</span></summary>
+        <p>As sessões são semanais e duram cerca de 50 minutos. Com crianças, o trabalho acontece pelo brincar: jogos, desenho, bonecos e histórias são os recursos pelos quais ela expressa e reorganiza o que sente. Com adolescentes, a conversa ocupa mais espaço. Em paralelo, acontecem os encontros de orientação com os responsáveis.</p>
+      </details>
+      <details>
+        <summary><span class="faq__q">Quais são as formas de pagamento?</span></summary>
+        <p>Aceito Pix, cartão e transferência, com pagamento por sessão ou mensal, conforme combinarmos. Os valores atualizados eu passo na primeira conversa pelo WhatsApp, junto com os horários disponíveis.</p>
+      </details>
+      <details>
+        <summary><span class="faq__q">Você atende por convênio? Emite recibo para reembolso?</span></summary>
+        <p>O atendimento é particular. Emito recibo para você solicitar reembolso junto ao seu plano de saúde e para a declaração de imposto de renda. Vale conferir antes com o seu convênio qual é o percentual de reembolso para consulta psicológica.</p>
+      </details>
+      <details>
+        <summary><span class="faq__q">Com que idade meu filho pode começar a terapia?</span></summary>
+        <p>Atendo crianças a partir dos 3 anos e adolescentes até os 18. Nas idades menores, o trabalho acontece principalmente pelo brincar e com participação próxima dos responsáveis.</p>
+      </details>
+      <details>
+        <summary><span class="faq__q">Preciso contar para meu filho que ele vai ao psicólogo?</span></summary>
+        <p>Sim, e isso faz diferença. Explicar de forma simples e verdadeira, dizendo que ele vai conversar e brincar com alguém que ajuda a entender o que a gente sente, reduz a ansiedade e ajuda a criança a chegar mais aberta ao primeiro encontro. Na primeira conversa eu oriento como fazer isso.</p>
+      </details>
+      <details>
+        <summary><span class="faq__q">Os pais participam das sessões?</span></summary>
+        <p>Depende da idade e do momento do processo. Com crianças pequenas, a participação costuma ser maior. De todo modo, os responsáveis são sempre parte do acompanhamento, com encontros de orientação e devolutivas periódicas.</p>
+      </details>
+      <details>
+        <summary><span class="faq__q">Vou saber tudo o que meu filho fala na sessão?</span></summary>
+        <p>Não. O sigilo é o que permite que a criança ou o adolescente confie no espaço. Compartilho com a família o que é necessário para o andamento do trabalho e para orientar o cuidado em casa, sempre com transparência sobre esse combinado desde o início.</p>
+      </details>
+      <details>
+        <summary><span class="faq__q">Quanto tempo dura o acompanhamento?</span></summary>
+        <p>Não existe um prazo fixo. Depende do que motivou a busca, da fase da criança e da resposta ao processo. Avaliamos juntos, ao longo do caminho, como o acompanhamento está evoluindo.</p>
+      </details>
+      <details>
+        <summary><span class="faq__q">Como funcionam as sessões online?</span></summary>
+        <p>Acontecem por videochamada, em plataforma segura, com a mesma duração das presenciais. Funcionam bem principalmente com adolescentes e em encontros de orientação parental. É importante garantir um ambiente reservado durante a sessão.</p>
+      </details>
+      <details>
+        <summary><span class="faq__q">E se eu precisar desmarcar uma sessão?</span></summary>
+        <p>Peço que me avise com pelo menos 24 horas de antecedência, para que a gente consiga remarcar dentro da mesma semana sempre que possível. A regularidade das sessões faz diferença no andamento do trabalho.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     INSTAGRAM
+     Conteúdo gerado por build.py a partir de publicar/assets/instagram/
+     ========================================================= -->
+<section class="section" id="instagram">
+  <div class="wrap">
+    <div class="section__head reveal" style="margin-bottom:26px">
+      <p class="eyebrow">Instagram</p>
+      <h2>Conteúdo sobre desenvolvimento infantil, toda semana.</h2>
+      <p>Compartilho ali orientações práticas para pais e cuidadores sobre ansiedade, comportamento e regulação emocional.</p>
+    </div>
+    <div class="ig__head reveal">
+      <a class="ig__handle" href="https://instagram.com/psi.rafaellarodrigues" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg> @psi.rafaellarodrigues</a>
+      <div class="ig__cta">
+        <a class="btn btn--primary" href="https://instagram.com/psi.rafaellarodrigues" target="_blank" rel="noopener">Seguir no Instagram</a>
+      </div>
+    </div>
+    <div class="ig__vazio reveal">
+      <strong>A malha aparece aqui assim que houver imagens.</strong>
+      Salve as imagens dos posts em <code>publicar/assets/instagram/</code>
+      e rode <code>python3 fonte/build.py</code>.
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     CTA + CONTATO
+     ========================================================= -->
+<section class="section section--tinted" id="contato">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div class="cta__grid">
+        <div>
+          <p class="eyebrow eyebrow--onDeep">Vamos conversar</p>
+          <h2>Dar o primeiro passo já é cuidar.</h2>
+          <p>Me conte pelo WhatsApp o que está acontecendo. A partir dali combinamos a primeira conversa e pensamos juntos no melhor caminho para a sua família.</p>
+          <div class="cta__buttons">
+            <a class="btn btn--onDeep" href="https://wa.me/5521969025509" target="_blank" rel="noopener">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+              Falar no WhatsApp
+            </a>
+            <a class="btn btn--outlineDeep" href="https://instagram.com/psi.rafaellarodrigues" target="_blank" rel="noopener">Ver o Instagram</a>
+          </div>
+        </div>
+        <div class="cta__art">
+          <img src="assets/rafaella_cta.jpg"
+               alt="Rafaella Rodrigues, psicóloga infantojuvenil, sentada e sorrindo">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="local" style="padding-top:0;padding-bottom:clamp(56px,8vw,100px);background:var(--surface-2)">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Onde fica</p>
+      <h2>O consultório na Barra da Tijuca.</h2>
+      <p>Atendimento presencial aqui, e online para famílias de outras regiões.</p>
+    </div>
+
+    <div class="mapa reveal">
+      <div class="mapa__moldura">
+        <!-- Fica atras do iframe. Se o embed do Google for bloqueado (bloqueador
+             de terceiros, politica de conteudo, rede corporativa), a pessoa ainda
+             ve o endereco em vez de um retangulo vazio. -->
+        <div class="mapa__reserva">
+          <img src="assets/mapa_consultorio.jpg" loading="lazy"
+               alt="Mapa mostrando a localização do consultório na Av. das Américas, 13.685, Barra da Tijuca, Rio de Janeiro">
+        </div>
+        <iframe
+          title="Mapa do Google com a localização do consultório de Rafaella Rodrigues, na Barra da Tijuca"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.402212427731!2d-43.441804499999996!3d-23.0089997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9bdbd618a25f07%3A0x64f75c1031d45994!2sRafaella%20R.%20Da%20Silva%20%7C%20Psic%C3%B3loga%20Infantojuvenil%20na%20Barra%20da%20Tijuca%20ABA%20e%20TCC!5e0!3m2!1spt-BR!2sbr!4v1788995398614!5m2!1spt-BR!2sbr"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>
+
+      <div class="mapa__info">
+        <div>
+          <strong>Av. das Américas, 13.685</strong>
+          <p>Barra da Tijuca, Rio de Janeiro, RJ<br>CEP 22785-620</p>
+        </div>
+        <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&query=Av.%20das%20Am%C3%A9ricas%2C%2013685%2C%20Barra%20da%20Tijuca%2C%20Rio%20de%20Janeiro%2C%20RJ%2C%2022785-620" target="_blank" rel="noopener">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.8"/></svg>
+          Abrir no Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- =========================================================
+     RODAPÉ
+     ========================================================= -->
+<footer class="footer" lang="pt-BR">
+  <div class="wrap">
+    <div class="footer__grid">
+
+      <div class="footer__marca">
+        <img src="assets/logo_horizontal.png" alt="Rafaella Rodrigues, Psicóloga Infantojuvenil">
+        <p class="footer__crp">CRP 05/69028</p>
+        <p>
+          Atendimento psicológico infantojuvenil e intervenção baseada em ABA, na Barra da
+          Tijuca e online.
+        </p>
+      </div>
+
+      <nav class="footer__col" aria-labelledby="rodapeNav">
+        <h2 class="footer__titulo" id="rodapeNav">Navegação</h2>
+        <ul>
+          <li><a href="#sobre">Sobre mim</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#duvidas">Perguntas frequentes</a></li>
+          <li><a href="#local">Onde fica</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__col">
+        <h2 class="footer__titulo">Contato</h2>
+        <ul>
+          <li>
+            <a href="https://wa.me/5521969025509" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg><span>(21) 96902-5509</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/psi.rafaellarodrigues" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="3.9"/><circle cx="17.5" cy="6.6" r="1.05" fill="currentColor" stroke="none"/></svg><span>@psi.rafaellarodrigues</span>
+            </a>
+          </li>
+          <li>
+            <span class="footer__endereco">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.8"/></svg><span>Av. das Américas, 13.685<br>Barra da Tijuca, Rio de Janeiro, RJ</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__base">
+      <p>© <span id="ano">2026</span> Rafaella Rodrigues. Todos os direitos reservados.</p>
+      <p>Este site tem caráter informativo e não substitui uma avaliação profissional.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- =========================================================
+     AVISO DE COOKIES
+     O botao "Recusar" nao e decorativo: ele bloqueia de fato o
+     carregamento de qualquer script de rastreio. Veja a funcao
+     carregarRastreio() no script, que e o unico lugar onde
+     analytics e pixel devem ser colocados.
+     ========================================================= -->
+<div class="cookies" id="avisoCookies" role="dialog" aria-modal="false"
+     aria-labelledby="avisoCookiesTitulo" lang="pt-BR" hidden>
+  <div>
+    <strong id="avisoCookiesTitulo">Sobre cookies neste site</strong>
+    <p>
+      Usamos cookies apenas para entender como as pessoas chegam até aqui e melhorar a
+      navegação. Nada é usado para identificar você, e a escolha é sua. Se recusar,
+      nenhum cookie de medição será criado.
+    </p>
+  </div>
+  <div class="cookies__acoes">
+    <button class="btn btn--ghost" type="button" data-cookies="recusar">Recusar</button>
+    <button class="btn btn--primary" type="button" data-cookies="aceitar">Aceitar</button>
+  </div>
+</div>
+
+<a class="wa-float" href="https://wa.me/5521969025509" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+</a>
+
+<script>
+(function(){
+  var root = document.documentElement;
+  root.classList.add('js');
+
+  document.getElementById('ano').textContent = new Date().getFullYear();
+
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('is-stuck', window.scrollY > 8); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  // ---- mapa: imagem por cima ate o Google confirmar que carregou ---------
+  // Um iframe bloqueado nao desaparece: ele fica como uma caixa vazia ocupando
+  // o espaco. Por isso a imagem estatica comeca por cima e so sai quando da
+  // para confirmar que o iframe navegou mesmo para o Google. Se o acesso a
+  // location do iframe da erro de origem cruzada, e porque carregou de
+  // verdade; se devolve "about:blank", nao carregou.
+  var moldura = document.querySelector('.mapa__moldura');
+  if (moldura) {
+    var frameMapa = moldura.querySelector('iframe');
+    var reservaMapa = moldura.querySelector('.mapa__reserva');
+    if (frameMapa && reservaMapa) {
+      var avaliarMapa = function(){
+        var carregou;
+        try {
+          carregou = frameMapa.contentWindow.location.href !== 'about:blank';
+        } catch (e) {
+          carregou = true;
+        }
+        reservaMapa.hidden = carregou;
+
+        // A imagem da reserva e lazy, para nao baixar 218 KB de quem ja vai
+        // ver o mapa do Google. Mas imagem lazy dentro de elemento oculto nao
+        // volta a ser buscada sozinha quando o elemento reaparece: aqui ela e
+        // reatribuida para forcar o download.
+        if (!carregou) {
+          var imgReserva = reservaMapa.querySelector('img');
+          if (imgReserva && imgReserva.naturalWidth === 0) {
+            imgReserva.loading = 'eager';
+            var endereco = imgReserva.getAttribute('src');
+            imgReserva.setAttribute('src', '');
+            imgReserva.setAttribute('src', endereco);
+          }
+        }
+      };
+      frameMapa.addEventListener('load', avaliarMapa);
+      // rede lenta: reavalia mais tarde para nao esconder o mapa a toa
+      setTimeout(avaliarMapa, 2000);
+      setTimeout(avaliarMapa, 5000);
+    }
+  }
+
+  // ---- consentimento de cookies ----------------------------------------
+  // A escolha e guardada no proprio navegador da pessoa. "Recusar" bloqueia
+  // de verdade: carregarRastreio() simplesmente nao roda.
+  var CHAVE_COOKIES = 'rr-consentimento-cookies';
+  var aviso = document.getElementById('avisoCookies');
+
+  function lerConsentimento(){
+    try { return localStorage.getItem(CHAVE_COOKIES); } catch (e) { return null; }
+  }
+  function gravarConsentimento(valor){
+    try { localStorage.setItem(CHAVE_COOKIES, valor); } catch (e) {}
+  }
+
+  // ======================================================================
+  // UNICO lugar onde entram Google Analytics, Meta Pixel ou qualquer outro
+  // script que crie cookie. So e chamada quando a pessoa aceita.
+  // Nao coloque nenhuma tag de rastreio fora daqui.
+  // ======================================================================
+  function carregarRastreio(){
+    if (window.__rastreioCarregado) return;   // nao carrega duas vezes
+    window.__rastreioCarregado = true;
+    // Exemplo, quando for ativar o GA4:
+    // var g = document.createElement('script');
+    // g.async = true;
+    // g.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX';
+    // document.head.appendChild(g);
+    // window.dataLayer = window.dataLayer || [];
+    // window.gtag = function(){ dataLayer.push(arguments); };
+    // gtag('js', new Date());
+    // gtag('config', 'G-XXXXXXX');
+  }
+
+  // deixa o estado legivel para quem for integrar depois
+  window.consentimentoCookies = lerConsentimento();   // 'aceitar', 'recusar' ou null
+
+  if (aviso) {
+    var escolhido = lerConsentimento();
+    if (escolhido === 'aceitar') {
+      carregarRastreio();
+    } else if (!escolhido) {
+      aviso.hidden = false;
+      root.classList.add('tem-aviso-cookies');
+
+      // O balao do WhatsApp sobe conforme a altura do aviso. Medir uma vez so
+      // nao serve: a fonte da web carrega depois e o texto reflui, deixando a
+      // medida defasada e os dois elementos encostados. Por isso a altura fica
+      // sob observacao enquanto o aviso estiver na tela.
+      var medirAviso = function(){
+        root.style.setProperty('--altura-aviso', aviso.offsetHeight + 'px');
+      };
+      medirAviso();
+      if (window.ResizeObserver) {
+        new ResizeObserver(medirAviso).observe(aviso);
+      } else {
+        window.addEventListener('resize', medirAviso);
+      }
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(medirAviso);
+    }
+
+    aviso.addEventListener('click', function(e){
+      var botao = e.target.closest('[data-cookies]');
+      if (!botao) return;
+      var escolha = botao.getAttribute('data-cookies');
+      gravarConsentimento(escolha);
+      window.consentimentoCookies = escolha;
+      if (escolha === 'aceitar') carregarRastreio();
+      aviso.hidden = true;
+      root.classList.remove('tem-aviso-cookies');
+    });
+  }
+
+  // ---- menu do mobile ----
+  var toggle = document.getElementById('navToggle');
+  var menu = document.getElementById('navMenu');
+  if (toggle && menu) {
+    var setMenu = function(aberto){
+      toggle.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+      toggle.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
+      menu.classList.toggle('is-open', aberto);
+    };
+    toggle.addEventListener('click', function(){
+      setMenu(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+    // fecha ao escolher uma secao
+    menu.addEventListener('click', function(e){
+      if (e.target.closest('a')) setMenu(false);
+    });
+    // fecha com Esc, devolvendo o foco para o botao
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setMenu(false); toggle.focus();
+      }
+    });
+    // fecha ao clicar fora
+    document.addEventListener('click', function(e){
+      if (toggle.getAttribute('aria-expanded') !== 'true') return;
+      if (!menu.contains(e.target) && !toggle.contains(e.target)) setMenu(false);
+    });
+    // ao voltar para desktop o painel nao pode ficar preso no estado aberto
+    window.matchMedia('(min-width: 901px)').addEventListener('change', function(ev){
+      if (ev.matches) setMenu(false);
+    });
+  }
+
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    items.forEach(function(el){ el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:.08});
+  items.forEach(function(el, i){
+    el.style.transitionDelay = (Math.min(i % 4, 3) * 70) + 'ms';
+    io.observe(el);
+  });
+
+  // rede de seguranca: nada fica invisivel depois que a pagina carrega
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      items.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight) el.classList.add('is-in');
+      });
+    }, 400);
+  });
+})();
+</script>
+
+</body>
+</html>

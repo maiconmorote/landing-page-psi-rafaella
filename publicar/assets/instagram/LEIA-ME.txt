@@ -1,0 +1,16 @@
+Coloque aqui as imagens dos posts do Instagram.
+
+- São usadas em ordem alfabética, até 6. Nomeie 01.jpg, 02.jpg, 03.jpg...
+- Formatos aceitos: .jpg, .png, .webp
+- Ficam recortadas em quadrado, então prefira imagens já quadradas (1080x1080).
+- Depois de salvar, rode: python3 fonte/build.py
+
+Para que cada quadro aponte para o seu post (em vez do perfil), crie
+fonte/instagram.json assim:
+
+{
+  "posts": [
+    {"arquivo": "01.jpg", "url": "https://instagram.com/p/XXXXXXXX/"},
+    {"arquivo": "02.jpg", "url": "https://instagram.com/p/YYYYYYYY/"}
+  ]
+}
