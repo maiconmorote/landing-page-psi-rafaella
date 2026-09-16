@@ -26,7 +26,10 @@
   --surface-2:#FBF9F5;
   --ink:#3B2B2E;
   --ink-strong:#71202E;
-  --ink-muted:#7A6367;
+  /* Malva-vinho, nao cinza: deriva do vinho da marca, entao o texto de apoio
+     fica na mesma familia dos titulos em vez de parecer neutro sem cor.
+     Tambem sobe o contraste sobre o creme de 4,89 para 6,03. */
+  --ink-muted:#7A4F58;
   --line:#E3DBD2;
   --line-strong:#CFC3B8;
   --accent:#D0442A;              /* terracota: rotulos, setas e foco */
@@ -62,6 +65,13 @@
    fundo do body, sao pintadas explicitamente a partir dos tokens acima. */
 
 *{box-sizing:border-box}
+
+/* O atributo hidden precisa vencer o display declarado nas regras de
+   componente. Sem isto, .cookies{display:flex} ignora o el.hidden do script e
+   o aviso nunca some ao clicar em Aceitar ou Recusar. O mesmo vale para a
+   reserva do mapa. A pre-visualizacao de artifacts injeta uma regra igual, por
+   isso o bug so aparecia no site hospedado. */
+[hidden]{display:none!important}
 
 body{
   margin:0;
@@ -181,7 +191,6 @@ main .reflect__lead,
 .review__who span,
 .reviews__meta p,
 .reviews__score,
-.section__head--center p,
 .reviews__vazio,
 .reviews__vazio p,
 .ig__vazio,
@@ -189,7 +198,6 @@ main .reflect__lead,
   text-align:left;
   hyphens:manual;
 }
-.section__head--center p{text-align:center}
 
 /* ---------- Navegação ---------- */
 .nav{
@@ -373,10 +381,18 @@ main .reflect__lead,
 }
 @media (max-width:900px){
   .hero__grid{grid-template-columns:1fr;gap:44px}
+  /* Em coluna unica o container fica mais largo que o subtitulo, que para em
+     53ch. Sem centralizar o subtitulo tambem, o botao centralizado no
+     container nao bate com o centro do texto. */
+  .hero__lede{margin-inline:auto}
 }
 
+/* O piso do clamp e o tamanho que vale no celular, porque abaixo de ~536px o
+   termo em vw fica menor que ele. Com 38px a headline ocupava 6 linhas num
+   aparelho de 375px. Em 28px, somado ao tracking mais fechado do bloco de
+   celular abaixo, cai para 4 linhas: de 255px para 125px de altura. */
 .hero h1{
-  font-size:clamp(38px,5.6vw,62px);
+  font-size:clamp(28px,5.6vw,62px);
   font-weight:600;
   margin-bottom:22px;
 }
@@ -386,9 +402,20 @@ main .reflect__lead,
   max-width:53ch;
   margin-bottom:32px;
 }
-.hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px}
+/* O botao fica centralizado sob o bloco de texto. Coluna, headline, subtitulo
+   e este container tem a mesma largura, entao centralizar aqui centraliza
+   em relacao ao texto. */
+.hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:34px;justify-content:center}
 
+/* As tres tags somam 805px e a coluna de texto do hero tem 559px. Em vez de
+   encolher a tipografia para caberem, elas ocupam a largura inteira da grade,
+   como uma faixa no pe do hero. */
 .chips{display:flex;flex-wrap:wrap;gap:10px}
+.hero__grid > .chips{
+  grid-column:1 / -1;
+  margin-top:clamp(6px,2vw,18px);
+  justify-content:center;   /* faixa centralizada na pagina */
+}
 .chip{
   display:inline-flex;
   align-items:center;
@@ -448,6 +475,17 @@ main .reflect__lead,
   .float--a,.float--b{animation:none}
 }
 
+/* Em tela estreita os titulos fecham um pouco o tracking. Tipografia de
+   display em corpo grande pede entreletra menor, e aqui isso ainda rende uma
+   linha a menos na headline: com -.02em ela ocupa 5 linhas em 28px, com
+   -.035em ocupa 4. */
+@media (max-width:560px){
+  .hero h1,
+  .section__head h2,
+  .about h2,
+  .cta h2{letter-spacing:-.035em}
+}
+
 /* ---------- Seções ---------- */
 .section{padding:clamp(56px,8vw,100px) 0}
 .section--tinted{background:var(--surface-2)}
@@ -455,11 +493,31 @@ main .reflect__lead,
 .section--deep h2,.section--deep h3{color:var(--deep-ink)}
 .section--deep p{color:var(--deep-muted)}
 
-.section__head{max-width:62ch;margin-bottom:clamp(34px,4vw,54px)}
-.section__head h2{font-size:clamp(29px,3.9vw,44px);margin-bottom:16px}
-.section__head p{font-size:18px;color:var(--ink-muted)}
-.section--deep .section__head p{color:var(--deep-muted)}
-.section__head--center{margin-inline:auto;text-align:center}
+/* Todo cabecalho de secao fica centralizado na pagina. Antes o bloco tinha
+   62ch e encostava na borda esquerda, deixando um vazio grande a direita.
+   O corpo do texto continua justificado, com a ultima linha centralizada:
+   sem isso, um paragrafo de uma linha so ficaria encostado a esquerda embaixo
+   de um titulo centralizado. */
+.section__head{
+  /* sem limite aqui: quem precisa de medida de leitura e o paragrafo, nao o
+     titulo. Com 62ch no bloco, "Cada processo e unico..." quebrava em 3 linhas
+     e sobrava espaco dos dois lados. Solto, cai para 2. */
+  margin-inline:auto;
+  text-align:center;
+  margin-bottom:clamp(34px,4vw,54px);
+}
+/* o rotulo precisa de regra propria: a lista de excecoes o forca a esquerda,
+   e isso vence a centralizacao herdada do bloco */
+.section__head .eyebrow{text-align:center}
+.section__head h2{font-size:clamp(26px,3.9vw,44px);margin-bottom:16px}
+.section__head p:not(.eyebrow){
+  font-size:18px;
+  color:var(--ink-muted);
+  text-align-last:center;
+  max-width:62ch;            /* medida de leitura, so para o corpo */
+  margin-inline:auto;
+}
+.section--deep .section__head p:not(.eyebrow){color:var(--deep-muted)}
 
 /* ---------- Grade de cards ---------- */
 .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
@@ -620,7 +678,7 @@ main .reflect__lead,
   text-transform:uppercase;
   white-space:nowrap;
 }
-.about h2{font-size:clamp(29px,3.9vw,42px);margin-bottom:20px}
+.about h2{font-size:clamp(26px,3.9vw,42px);margin-bottom:20px}
 .about p+p{margin-top:16px}
 .about p{color:var(--ink-muted);font-size:17px;max-width:60ch}
 .creds{
@@ -855,6 +913,9 @@ main .reflect__lead,
 
 /* ---------- Reflexão ---------- */
 .reflect__lead{
+  text-align-last:center;
+  max-width:62ch;
+  margin-inline:auto;
   font-family:var(--display);
   font-size:clamp(19px,2.1vw,23px);
   font-weight:500;
@@ -1023,7 +1084,7 @@ main .reflect__lead,
   z-index:1;
 }
 @media (max-width:860px){.cta__grid{grid-template-columns:1fr}}
-.cta h2{font-size:clamp(28px,3.8vw,42px);color:var(--deep-ink);margin-bottom:16px}
+.cta h2{font-size:clamp(26px,3.8vw,42px);color:var(--deep-ink);margin-bottom:16px}
 .cta p{color:var(--deep-muted);font-size:17.5px;max-width:52ch;margin-bottom:30px}
 .cta__buttons{display:flex;flex-wrap:wrap;gap:14px}
 .cta__art{display:grid;place-items:center}
@@ -1302,12 +1363,10 @@ main .reflect__lead,
   .review__source{justify-content:center}
   .review__who{align-items:center}
 
-  /* contato e rodape */
-
   /* estes rotulos sao forcados a esquerda na versao desktop;
      no mobile precisam acompanhar a centralizacao */
   .review__who span,
-  .reviews__meta p,
+  .reviews__meta p{text-align:center}
 }
 
 
@@ -1390,11 +1449,6 @@ main .reflect__lead,
           Conversar no WhatsApp
         </a>
       </div>
-      <div class="chips">
-        <span class="chip"><i style="background:var(--menta)"></i>Atendimento online e presencial</span>
-        <span class="chip"><i style="background:var(--rosa)"></i>Crianças e adolescentes</span>
-        <span class="chip"><i style="background:var(--amarelo)"></i>Abordagens baseadas em evidências</span>
-      </div>
     </div>
 
     <div class="hero__badge">
@@ -1402,13 +1456,79 @@ main .reflect__lead,
       <img class="float float--a" src="__ASSET_char_heart__" alt="" aria-hidden="true">
       <img class="float float--b" src="__ASSET_char_brain__" alt="" aria-hidden="true">
     </div>
+
+      <div class="chips">
+        <span class="chip"><i style="background:var(--menta)"></i>Atendimento online e presencial</span>
+        <span class="chip"><i style="background:var(--rosa)"></i>Crianças e adolescentes</span>
+        <span class="chip"><i style="background:var(--amarelo)"></i>Abordagens baseadas em evidências</span>
+      </div>
   </div>
 </section>
 
 <!-- =========================================================
-     2. BENEFÍCIOS
+     2. REFLEXÃO
      ========================================================= -->
-<section class="section section--tinted" id="beneficios">
+<section class="section section--deep" id="reflexao">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow eyebrow--onDeep">Talvez você esteja percebendo</p>
+      <h2>Quando você sente que alguma coisa mudou.</h2>
+      <p class="reflect__lead">
+        Nem sempre é fácil entender o que está acontecendo com uma criança. Às vezes, ela
+        muda o comportamento, fica mais irritada, se afasta, começa a ter dificuldades na
+        escola ou passa a reagir de um jeito que você não reconhece. E, muitas vezes, surge
+        a dúvida: “Será que é só uma fase?”
+      </p>
+    </div>
+
+    <div class="signals">
+      <div class="signal reveal">
+        <strong>Mudanças de comportamento</strong>
+        <p>Irritabilidade, choro, sensibilidade, crises ou reações que você não reconhece.</p>
+      </div>
+      <div class="signal reveal">
+        <strong>Desafios na rotina</strong>
+        <p>Sono, alimentação, escola, mudanças ou situações que passaram a ser mais difíceis.</p>
+      </div>
+      <div class="signal reveal">
+        <strong>Dificuldades nas relações</strong>
+        <p>Afastamento, conflitos, dificuldade para fazer amigos ou manter interações.</p>
+      </div>
+      <div class="signal reveal">
+        <strong>Você não sabe mais como ajudar</strong>
+        <p>Já tentou diferentes estratégias, mas sente que precisa compreender melhor o que está acontecendo.</p>
+      </div>
+    </div>
+
+    <div class="reflect__close reveal">
+      <img src="__ASSET_char_bubble__" alt="" aria-hidden="true">
+      <div>
+        <p>
+          Nenhum desses sinais, sozinho, define um diagnóstico. Mas quando algumas
+          dificuldades começam a aparecer com frequência ou interferem na rotina, nas
+          relações ou na escola, pode ser importante olhar com mais atenção para o que
+          está acontecendo.
+        </p>
+        <p>
+          Nem sempre é fácil entender o que uma criança está vivendo ou saber qual é a
+          melhor forma de ajudar. A terapia pode ser um espaço para compreender essas
+          dificuldades junto com a família e construir, aos poucos, novas formas de lidar
+          com elas.
+        </p>
+        <p>Você não precisa ter todas as respostas. Conversar também é um primeiro passo.</p>
+      </div>
+      <a class="btn btn--onDeep" href="https://wa.me/5521969025509" target="_blank" rel="noopener">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+        Conversar no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     3. BENEFÍCIOS
+     ========================================================= -->
+<section class="section" id="beneficios">
   <div class="wrap">
     <div class="section__head reveal">
       <p class="eyebrow">O que a terapia pode trazer</p>
@@ -1508,9 +1628,9 @@ main .reflect__lead,
 </section>
 
 <!-- =========================================================
-     3. SOBRE
+     4. SOBRE
      ========================================================= -->
-<section class="section" id="sobre">
+<section class="section section--tinted" id="sobre">
   <div class="wrap about">
 __RETRATO__
 
@@ -1552,66 +1672,6 @@ __RETRATO__
         <span class="chip"><i style="background:var(--menta)"></i>TCC e ABA</span>
         <span class="chip"><i style="background:var(--azul)"></i>Barra da Tijuca · Rio de Janeiro</span>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- =========================================================
-     4. REFLEXÃO
-     ========================================================= -->
-<section class="section section--deep" id="reflexao">
-  <div class="wrap">
-    <div class="section__head reveal">
-      <p class="eyebrow eyebrow--onDeep">Talvez você esteja percebendo</p>
-      <h2>Quando você sente que alguma coisa mudou.</h2>
-      <p class="reflect__lead">
-        Nem sempre é fácil entender o que está acontecendo com uma criança. Às vezes, ela
-        muda o comportamento, fica mais irritada, se afasta, começa a ter dificuldades na
-        escola ou passa a reagir de um jeito que você não reconhece. E, muitas vezes, surge
-        a dúvida: “Será que é só uma fase?”
-      </p>
-    </div>
-
-    <div class="signals">
-      <div class="signal reveal">
-        <strong>Mudanças de comportamento</strong>
-        <p>Irritabilidade, choro, sensibilidade, crises ou reações que você não reconhece.</p>
-      </div>
-      <div class="signal reveal">
-        <strong>Desafios na rotina</strong>
-        <p>Sono, alimentação, escola, mudanças ou situações que passaram a ser mais difíceis.</p>
-      </div>
-      <div class="signal reveal">
-        <strong>Dificuldades nas relações</strong>
-        <p>Afastamento, conflitos, dificuldade para fazer amigos ou manter interações.</p>
-      </div>
-      <div class="signal reveal">
-        <strong>Você não sabe mais como ajudar</strong>
-        <p>Já tentou diferentes estratégias, mas sente que precisa compreender melhor o que está acontecendo.</p>
-      </div>
-    </div>
-
-    <div class="reflect__close reveal">
-      <img src="__ASSET_char_bubble__" alt="" aria-hidden="true">
-      <div>
-        <p>
-          Nenhum desses sinais, sozinho, define um diagnóstico. Mas quando algumas
-          dificuldades começam a aparecer com frequência ou interferem na rotina, nas
-          relações ou na escola, pode ser importante olhar com mais atenção para o que
-          está acontecendo.
-        </p>
-        <p>
-          Nem sempre é fácil entender o que uma criança está vivendo ou saber qual é a
-          melhor forma de ajudar. A terapia pode ser um espaço para compreender essas
-          dificuldades junto com a família e construir, aos poucos, novas formas de lidar
-          com elas.
-        </p>
-        <p>Você não precisa ter todas as respostas. Conversar também é um primeiro passo.</p>
-      </div>
-      <a class="btn btn--onDeep" href="https://wa.me/5521969025509" target="_blank" rel="noopener">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
-        Conversar no WhatsApp
-      </a>
     </div>
   </div>
 </section>
