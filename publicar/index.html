@@ -500,7 +500,7 @@ main .reflect__lead,
   .hero h1,
   .section__head h2,
   .about h2,
-  .cta h2{letter-spacing:-.035em}
+  .convite h2{letter-spacing:-.035em}
 }
 
 /* ---------- Seções ---------- */
@@ -531,9 +531,13 @@ main .reflect__lead,
   font-size:18px;
   color:var(--ink-muted);
   text-align-last:center;
-  max-width:62ch;            /* medida de leitura, so para o corpo */
+  /* sem medida de leitura: o texto de apresentacao das secoes ocupa a
+     largura inteira da pagina, por decisao do cliente. No celular quem
+     limita a linha e a propria tela. */
   margin-inline:auto;
 }
+/* cabecalho com mais de um paragrafo (secao de ABA) */
+.section__head p:not(.eyebrow) + p:not(.eyebrow){margin-top:14px}
 .section--deep .section__head p:not(.eyebrow){color:var(--deep-muted)}
 
 /* ---------- Grade de cards ---------- */
@@ -698,6 +702,14 @@ main .reflect__lead,
 .about h2{font-size:clamp(26px,3.9vw,42px);margin-bottom:20px}
 .about p+p{margin-top:16px}
 .about p{color:var(--ink-muted);font-size:17px;max-width:60ch}
+/* Registro profissional fechando o texto do "Sobre mim" */
+.about p.about__crp{
+  margin-top:24px;
+  font-size:14px;
+  letter-spacing:.1em;
+  color:var(--ink-strong);
+  text-align:left;
+}
 .creds{
   display:flex;
   flex-wrap:wrap;
@@ -931,7 +943,6 @@ main .reflect__lead,
 /* ---------- Reflexão ---------- */
 .reflect__lead{
   text-align-last:center;
-  max-width:62ch;
   margin-inline:auto;
   font-family:var(--display);
   font-size:clamp(19px,2.1vw,23px);
@@ -962,6 +973,100 @@ main .reflect__lead,
 @media (max-width:1000px){
   .reflect__close{grid-template-columns:auto minmax(0,1fr);row-gap:24px}
   .reflect__close .btn{grid-column:1 / -1;justify-self:start}
+}
+
+/* ---------- Intervenção em ABA ---------- */
+/* Marca-texto que acompanha a quebra de linha: o .mark do hero e uma tarja
+   so, com white-space:nowrap, e no celular uma frase desta estouraria a tela.
+   O degrade pintado no fundo do proprio texto quebra junto com ele. */
+.aba__destaque{
+  font-family:var(--display);
+  font-size:clamp(20px,2.3vw,25px);
+  font-weight:600;
+  line-height:1.35;
+  color:var(--vinho);
+  background:linear-gradient(transparent 64%, var(--halo) 64%);
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+
+/* Atuacao principal, por isso vem logo depois do hero e ganha o unico cartao
+   colorido da pagina. A esquerda, como o trabalho acontece; a direita, o que
+   pode ser trabalhado, fechando com o botao. No celular a ordem do codigo ja
+   e a ordem de leitura, e o botao fica no fim da secao. */
+.aba{
+  display:grid;
+  grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+  gap:24px;
+  align-items:stretch;
+}
+@media (max-width:900px){
+  .aba{grid-template-columns:1fr;max-width:620px;margin-inline:auto}
+}
+.aba__como,
+.aba__foco{
+  border-radius:var(--r-card);
+  padding:clamp(26px,3vw,36px) clamp(22px,3vw,36px);
+}
+.aba__como{background:var(--surface);border:1px solid var(--line)}
+.aba h3{font-size:21px;line-height:1.25}
+.aba__passos{list-style:none;margin:10px 0 0;padding:0}
+.aba__passo{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+  padding:18px 0;
+  border-top:1px solid var(--line);
+}
+.aba__passo:first-child{border-top:0}
+.aba__passo:last-child{padding-bottom:0}
+.aba__passo > div{min-width:0}
+.aba__ic{
+  width:44px;height:44px;
+  border-radius:14px;
+  display:grid;place-items:center;
+  flex:none;
+}
+.aba__passo h4{font-size:17px;line-height:1.3;margin-bottom:4px}
+.aba__passo p{font-size:15.5px;color:var(--ink-muted);line-height:1.6}
+
+.aba__foco{
+  background:var(--menta);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  text-align:center;
+}
+/* circulo branco atras do personagem: o rabisco azul direto sobre o menta
+   perdia contraste */
+.aba__mascote{
+  width:clamp(96px,10vw,120px);height:clamp(96px,10vw,120px);
+  border-radius:50%;
+  background:var(--surface);
+  display:grid;place-items:center;
+  flex:none;
+}
+.aba__mascote img{width:72%;height:auto}
+.aba__foco p{font-size:15.5px;color:var(--ink);text-align-last:center;max-width:42ch}
+.aba__temas{
+  list-style:none;
+  margin:0 0 6px;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+}
+.aba__temas li{
+  background:var(--surface);
+  border-radius:var(--r-pill);
+  padding:7px 15px;
+  font-size:14px;
+  font-weight:500;
+  line-height:1.3;
+  color:var(--vinho);
 }
 
 /* ---------- Depoimentos ---------- */
@@ -1011,12 +1116,14 @@ main .reflect__lead,
 }
 
 /* ---------- Malha do Instagram ---------- */
-.ig__head{
+/* Faixa abaixo da malha: arroba e botao, centralizados */
+.ig__rodape{
   display:flex;
   flex-wrap:wrap;
   align-items:center;
-  gap:16px;
-  margin-bottom:26px;
+  justify-content:center;
+  gap:14px 24px;
+  margin-top:clamp(26px,3vw,36px);
 }
 .ig__handle{
   display:inline-flex;
@@ -1029,23 +1136,37 @@ main .reflect__lead,
   text-decoration:none;
 }
 .ig__handle:hover{color:var(--accent)}
-.ig__cta{margin-left:auto}
-@media (max-width:620px){
-  .ig__cta{margin-left:0;width:100%}
-  .ig__cta .btn{width:100%}
-}
 
 .ig__grid{
   display:grid;
   grid-template-columns:repeat(3,minmax(0,1fr));
   gap:14px;
 }
-@media (max-width:620px){.ig__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+/* No celular, duas colunas deixariam o terceiro post sozinho numa linha.
+   Vira uma faixa que desliza para o lado, com o proximo post aparecendo na
+   borda para indicar que ha mais. A rolagem fica dentro da faixa: a pagina
+   nao rola na horizontal. */
+@media (max-width:620px){
+  .ig__grid{
+    grid-template-columns:none;
+    grid-auto-flow:column;
+    grid-auto-columns:78%;
+    gap:12px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    margin-inline:calc(-1 * var(--pad));
+    padding:2px var(--pad) 8px;
+    scroll-padding-inline:var(--pad);
+    scrollbar-width:none;
+  }
+  .ig__grid::-webkit-scrollbar{display:none}
+  .ig__tile{scroll-snap-align:start}
+}
 
 .ig__tile{
   position:relative;
   display:block;
-  aspect-ratio:1;
+  aspect-ratio:4/5;          /* formato do post do Instagram */
   border-radius:20px;
   overflow:hidden;
   background:var(--surface-2);
@@ -1083,41 +1204,105 @@ main .reflect__lead,
 }
 .ig__vazio strong{display:block;color:var(--ink-strong);font-family:var(--display);font-size:18px;margin-bottom:8px}
 
-/* ---------- CTA final ---------- */
-.cta{
-  background:var(--deep);
-  color:var(--deep-ink);
-  border-radius:var(--r-card);
-  padding:clamp(40px,6vw,68px) clamp(28px,5vw,64px);
+/* ---------- Convite final ---------- */
+/* Antes era um bloco vinho com foto redonda pequena: bonito, mas formal para
+   o momento em que a familia decide chamar. Agora e um cartao rosa claro,
+   com a foto grande em arco (lembra uma porta aberta), texto em primeira
+   pessoa e uma assinatura, como um bilhete. */
+.convite{
   position:relative;
   overflow:hidden;
-}
-.cta__grid{
   display:grid;
-  grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);
-  gap:clamp(30px,4vw,56px);
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:clamp(32px,5vw,72px);
   align-items:center;
-  position:relative;
-  z-index:1;
+  background:#FFEAF2;                 /* rosa da marca bem diluido */
+  border-radius:var(--r-card);
+  padding:clamp(34px,5vw,64px) clamp(21px,5vw,72px);
 }
-@media (max-width:860px){.cta__grid{grid-template-columns:1fr}}
-.cta h2{font-size:clamp(26px,3.8vw,42px);color:var(--deep-ink);margin-bottom:16px}
-.cta p{color:var(--deep-muted);font-size:17.5px;max-width:52ch;margin-bottom:30px}
-.cta__buttons{display:flex;flex-wrap:wrap;gap:14px}
-.cta__art{display:grid;place-items:center}
-.cta__art img{
-  width:min(78%,240px);
-  aspect-ratio:1;
-  object-fit:cover;
+/* manchas suaves da marca, como no hero */
+.convite::before,
+.convite::after{
+  content:"";
+  position:absolute;
   border-radius:50%;
-  /* anel claro para a foto nao encostar direto no vinho do fundo */
-  border:4px solid rgba(247,242,238,.22);
-  box-shadow:0 10px 30px rgba(0,0,0,.22);
+  pointer-events:none;
 }
+.convite::before{width:min(40vw,360px);aspect-ratio:1;background:var(--menta);opacity:.55;left:-90px;bottom:-110px}
+.convite::after{width:min(18vw,150px);aspect-ratio:1;background:var(--amarelo);opacity:.25;right:-40px;top:-40px}
+.convite > *{position:relative;z-index:1}
+
+.convite__foto{justify-self:center;width:min(100%,380px)}
+.convite__retrato{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  border-radius:999px 999px var(--r-card) var(--r-card);
+  border:6px solid var(--surface);
+  box-shadow:var(--shadow-lg);
+}
+.convite__coracao{
+  position:absolute;
+  width:clamp(64px,7vw,88px);
+  left:-28px;
+  bottom:34px;
+  filter:drop-shadow(0 6px 12px rgba(113,32,46,.18));
+}
+
+.convite h2{font-size:clamp(28px,3.8vw,44px);margin-bottom:18px}
+.convite__texto > p:not(.eyebrow):not(.convite__assinatura){
+  font-size:17.5px;
+  color:var(--ink);
+  max-width:54ch;
+}
+.convite__assinatura{
+  font-family:var(--display);
+  font-size:18px;
+  font-weight:500;
+  color:var(--vinho);
+  margin-top:14px;
+}
+.convite__cuidados{
+  list-style:none;
+  margin:26px 0 30px;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.convite__cuidados li{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--surface);
+  border-radius:var(--r-pill);
+  padding:9px 16px;
+  font-size:14.5px;
+  font-weight:500;
+  line-height:1.3;
+  color:var(--ink);
+}
+.convite__cuidados svg{color:var(--terracota);flex:none}
+
+/* Botao centralizado na coluna de texto. O .btn e inline-flex, entao precisa
+   virar bloco flexivel com largura de conteudo para a margem automatica
+   funcionar. O max-width evita estouro em tela estreita. */
+.convite__texto > .btn{
+  display:flex;
+  width:max-content;
+  max-width:100%;
+  margin-inline:auto;
+}
+
 @media (max-width:860px){
-  /* no celular a foto vem antes do texto: rosto, convite, botao */
-  .cta__art{order:-1;margin-bottom:6px}
-  .cta__art img{width:150px;border-width:3px}
+  .convite{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .convite__foto{width:min(72%,280px)}
+  .convite__coracao{left:-22px;bottom:22px}
+  .convite__texto > p:not(.eyebrow):not(.convite__assinatura){margin-inline:auto;text-align-last:center}
+  .convite .eyebrow{text-align:center}
+  .convite__cuidados{justify-content:center}
+  /* linha unica: sem isto a regra "main p" a deixaria encostada a esquerda */
+  .convite__assinatura{text-align:center}
 }
 
 
@@ -1354,10 +1539,9 @@ main .reflect__lead,
 
   /* botoes e pilulas */
   .hero__cta,
-  .cta__buttons,
   .chips,
   .creds,
-  .ig__head,
+  .ig__rodape,
   .reviews__summary{justify-content:center}
   .reflect__close{grid-template-columns:1fr;justify-items:center;text-align:center}
   .reflect__close .btn{justify-self:center}
@@ -1366,6 +1550,12 @@ main .reflect__lead,
   /* cartoes de beneficio e etapas */
   .benefit,
   .step{align-items:center;text-align:center}
+
+  /* etapas da ABA: com o icone ao lado, o texto ficava com ~280px, estreito
+     demais para justificar. Empilha e centraliza, como nos beneficios. */
+  .aba__como > h3{text-align:center}
+  .aba__passo{flex-direction:column;align-items:center;text-align:center;gap:12px}
+  .aba__passo > div{width:100%}
 
   /* faixa de faixa etaria e orientacao parental:
      empilha, centraliza a imagem e centraliza o rotulo e o titulo */
@@ -1457,7 +1647,7 @@ main .reflect__lead,
         <a href="#depoimentos">Depoimentos</a>
         <a href="#duvidas">Perguntas frequentes</a>
       </nav>
-      <a class="btn btn--primary" href="https://wa.me/5521969025509" target="_blank" rel="noopener">
+      <a class="btn btn--primary" href="https://wa.me/5521969025509?text=Oi%2C%20Rafaella.%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20sess%C3%B5es%21" target="_blank" rel="noopener">
         Agendar conversa
       </a>
     </div>
@@ -1478,12 +1668,12 @@ main .reflect__lead,
       <p class="eyebrow">Psicologia infantojuvenil · Barra da Tijuca, Rio de Janeiro</p>
       <h1>Um espaço seguro onde seu filho aprende a lidar com o que sente enquanto <span class="mark">se desenvolve</span></h1>
       <p class="hero__lede">
-        Atendimento psicológico infantojuvenil e intervenção baseada em ABA para crianças
+        Atendimento psicológico infantojuvenil e intervenção em ABA para crianças
         atípicas. Aqui, cada caminho é construído e percorrido junto com a família e a escola,
-        respeitando as necessidades e potencialidades de cada criança.
+        respeitando as necessidades e individualidades de cada criança.
       </p>
       <div class="hero__cta">
-        <a class="btn btn--primary" href="https://wa.me/5521969025509" target="_blank" rel="noopener">
+        <a class="btn btn--primary" href="https://wa.me/5521969025509?text=Oi%2C%20Rafaella.%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20sess%C3%B5es%21" target="_blank" rel="noopener">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
           Conversar no WhatsApp
         </a>
@@ -1505,13 +1695,82 @@ main .reflect__lead,
 </section>
 
 <!-- =========================================================
-     2. REFLEXÃO
+     2. INTERVENÇÃO EM ABA
      ========================================================= -->
-<section class="section section--deep" id="reflexao">
+<section class="section section--tinted" id="aba">
   <div class="wrap">
     <div class="section__head reveal">
-      <p class="eyebrow eyebrow--onDeep">Talvez você esteja percebendo</p>
-      <h2>Quando você sente que alguma coisa mudou.</h2>
+      <h2>Intervenção em ABA</h2>
+      <p>A Análise do Comportamento Aplicada (ABA) é uma ciência validada por pesquisas
+        científicas para o ensino de habilidades e manejo comportamental de pessoas
+        autistas.</p>
+      <p><strong class="aba__destaque">No meu acompanhamento ABA</strong>, cada criança é avaliada de forma individualizada e, a
+        partir disso, planejo o ensino do seu filho da maneira que ele aprende e também
+        pensando em generalizações de comportamentos.</p>
+    </div>
+
+    <div class="aba">
+      <div class="aba__como reveal">
+        <h3>Na prática, como trabalho a generalização?</h3>
+        <ol class="aba__passos">
+          <li class="aba__passo">
+            <span class="aba__ic" style="background:var(--azul)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#71202E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.8 9.4 4.4L12 12.6 2.6 8.2 12 3.8Z"/><path d="M6.6 10.4v4.3c0 1.8 2.4 3.2 5.4 3.2s5.4-1.4 5.4-3.2v-4.3"/></svg>
+            </span>
+            <div>
+              <h4>AT Escolar</h4>
+              <p>Acompanhamento realizado no ambiente escolar, favorecendo a aplicação das estratégias e habilidades trabalhadas no contexto da escola. Com supervisão comigo para alinhamento contínuo da intervenção.</p>
+            </div>
+          </li>
+          <li class="aba__passo">
+            <span class="aba__ic" style="background:var(--amarelo)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#71202E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.8 11 12 4.2l8.2 6.8"/><path d="M5.8 9.6v9.9h12.4V9.6"/><path d="M10 19.5v-5h4v5"/></svg>
+            </span>
+            <div>
+              <h4>AT Domiciliar</h4>
+              <p>Acompanhamento realizado no ambiente familiar, possibilitando trabalhar habilidades diretamente nas situações da rotina e favorecer o ensino no seu ambiente natural.</p>
+            </div>
+          </li>
+          <li class="aba__passo">
+            <span class="aba__ic" style="background:var(--menta)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#71202E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M2.6 19.8a6.4 6.4 0 0 1 12.8 0"/><circle cx="17.6" cy="9.6" r="2.4"/><path d="M16.2 14.9a5.2 5.2 0 0 1 5.2 4.9"/></svg>
+            </span>
+            <div>
+              <h4>Orientação parental e treinamento de responsáveis</h4>
+              <p>Orientação aos responsáveis para que possam compreender e aplicar estratégias no dia a dia, favorecendo a continuidade do trabalho e a generalização das habilidades.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="aba__foco reveal">
+        <div class="aba__mascote"><img src="assets/char_scribble.png" alt="" aria-hidden="true"></div>
+        <h3>O que pode ser trabalhado</h3>
+        <p>Os objetivos são definidos para cada criança, a partir do que é importante para ela e para a família. Entre eles:</p>
+        <ul class="aba__temas">
+          <li>Comunicação</li>
+          <li>Interação social</li>
+          <li>Autonomia</li>
+          <li>Aprendizagem</li>
+          <li>Comportamentos interferentes</li>
+        </ul>
+        <a class="btn btn--primary" href="https://wa.me/5521969025509?text=Oi%2C%20Rafaella.%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20sess%C3%B5es%21" target="_blank" rel="noopener">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+          Conversar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     3. PSICOTERAPIA INFANTOJUVENIL
+     ========================================================= -->
+<section class="section section--deep" id="psicoterapia">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow eyebrow--onDeep">Para crianças e adolescentes</p>
+      <h2>Psicoterapia infantojuvenil: para quando você sente que alguma coisa mudou.</h2>
       <p class="reflect__lead">
         Nem sempre é fácil entender o que está acontecendo com uma criança. Às vezes, ela
         muda o comportamento, fica mais irritada, se afasta, começa a ter dificuldades na
@@ -1549,14 +1808,14 @@ main .reflect__lead,
           está acontecendo.
         </p>
         <p>
-          Nem sempre é fácil entender o que uma criança está vivendo ou saber qual é a
-          melhor forma de ajudar. A terapia pode ser um espaço para compreender essas
-          dificuldades junto com a família e construir, aos poucos, novas formas de lidar
-          com elas.
+          Na psicoterapia infantojuvenil, baseada na Terapia Cognitivo-Comportamental
+          (TCC), a criança ou o adolescente encontra um espaço seguro para entender o que
+          sente e construir, aos poucos e junto com a família, novas formas de lidar com
+          essas dificuldades.
         </p>
         <p>Você não precisa ter todas as respostas. Conversar também é um primeiro passo.</p>
       </div>
-      <a class="btn btn--onDeep" href="https://wa.me/5521969025509" target="_blank" rel="noopener">
+      <a class="btn btn--onDeep" href="https://wa.me/5521969025509?text=Oi%2C%20Rafaella.%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20sess%C3%B5es%21" target="_blank" rel="noopener">
         <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
         Conversar no WhatsApp
       </a>
@@ -1565,7 +1824,7 @@ main .reflect__lead,
 </section>
 
 <!-- =========================================================
-     3. BENEFÍCIOS
+     4. BENEFÍCIOS
      ========================================================= -->
 <section class="section" id="beneficios">
   <div class="wrap">
@@ -1616,36 +1875,24 @@ main .reflect__lead,
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#71202E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6.8h10"/><path d="M10 12h10"/><path d="M10 17.2h6.5"/><path d="m3.6 6.6 1.5 1.5 2.5-2.7"/><path d="m3.6 11.8 1.5 1.5 2.5-2.7"/></svg>
         </div>
         <h3>Desenvolver mais autonomia no dia a dia</h3>
-        <p>Autonomia não acontece de uma hora para outra. Ela é construída a partir de pequenos passos. O trabalho terapêutico pode favorecer habilidades para que a criança participe cada vez mais dos seus cuidados pessoais, da organização e de outras atividades da rotina, sempre considerando suas necessidades e seu momento de desenvolvimento. Cada conquista também pode fortalecer a percepção de “eu sou capaz”, ajudando a criança a reconhecer suas próprias habilidades.</p>
+        <p>Autonomia não acontece de uma hora para outra. Ela é construída a partir de pequenos passos. O trabalho terapêutico pode favorecer habilidades para que a criança participe cada vez mais dos seus cuidados pessoais, da organização e de outras atividades da rotina, sempre considerando suas necessidades e seu momento de desenvolvimento.</p>
       </article>
 
       <article class="benefit reveal">
         <div class="benefit__ic" style="background:var(--rosa)">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#71202E" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.8" y="5.4" width="18.4" height="13.2" rx="2.4"/><path d="M8.9 5.4v13.2"/><path d="M15.1 5.4v13.2"/><path d="M2.8 12h18.4"/></svg>
         </div>
-        <h3>Aprender novas formas de se comunicar e expressar necessidades</h3>
-        <p>Não saber como falar não significa que ela não tenha o que comunicar. Quando a criança não consegue comunicar o que quer, precisa ou sente, isso pode aparecer nos comportamentos. Na terapia, podemos utilizar a Comunicação Aumentativa e Alternativa (CAA) como recurso para ampliar essas possibilidades de expressão, permitindo que a criança possa pedir, recusar, escolher, fazer comentários, expressar sentimentos e comunicar o que precisa.</p>
+        <h3>Aprender novas alternativas de comunicação</h3>
+        <p>Cada criança encontra suas próprias maneiras de se comunicar. Quando faltam palavras para expressar o que sente, quer ou precisa, podemos ajudá-la a encontrar outras formas de se fazer compreender. Na terapia, trabalhamos essas possibilidades de maneira individualizada, favorecendo uma comunicação mais clara, segura e funcional no dia a dia.</p>
       </article>
     </div>
 
     <div class="who reveal">
       <div class="who__item">
-        <div class="who__art" style="background:var(--menta)">
-          <!-- Quebra-cabeca de quatro pecas, conforme referencia do cliente.
-               E uma peca so, girada 90 graus quatro vezes: o pino de cada uma
-               entra no encaixe da vizinha, e os pinos externos formam um moinho
-               (azul em cima, amarelo a direita, verde embaixo, vermelho a
-               esquerda). Cores da referencia, nao da paleta da marca. -->
-          <svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true">
-            <g transform="rotate(0 12 12)"><path d="M3 3 H5.6 a1.9 1.9 0 0 0 3.8 0 H12 V5.6 a1.9 1.9 0 0 1 0 3.8 V12 H9.4 a1.9 1.9 0 0 1 -3.8 0 H3 Z" fill="#2196F3"/></g>  <!-- azul -->
-            <g transform="rotate(90 12 12)"><path d="M3 3 H5.6 a1.9 1.9 0 0 0 3.8 0 H12 V5.6 a1.9 1.9 0 0 1 0 3.8 V12 H9.4 a1.9 1.9 0 0 1 -3.8 0 H3 Z" fill="#FFCF2E"/></g>  <!-- amarelo -->
-            <g transform="rotate(180 12 12)"><path d="M3 3 H5.6 a1.9 1.9 0 0 0 3.8 0 H12 V5.6 a1.9 1.9 0 0 1 0 3.8 V12 H9.4 a1.9 1.9 0 0 1 -3.8 0 H3 Z" fill="#82BC28"/></g>  <!-- verde -->
-            <g transform="rotate(270 12 12)"><path d="M3 3 H5.6 a1.9 1.9 0 0 0 3.8 0 H12 V5.6 a1.9 1.9 0 0 1 0 3.8 V12 H9.4 a1.9 1.9 0 0 1 -3.8 0 H3 Z" fill="#D8232A"/></g>  <!-- vermelho -->
-          </svg>
-        </div>
+        <div class="who__art" style="background:var(--menta)"><img src="assets/char_scribble.png" alt=""></div>
         <div>
           <h3>Intervenção ABA</h3>
-          <p>Para o desenvolvimento de crianças atípicas, a intervenção baseada em ABA trabalha o ensino de novas habilidades, a redução de comportamentos que interferem na aprendizagem e a generalização dessas aprendizagens para diferentes ambientes. O trabalho envolve acompanhamento terapêutico (AT) e orientação parental, para que os objetivos trabalhados também façam parte da rotina da criança.</p>
+          <p>Para o desenvolvimento de crianças atípicas, a intervenção ABA trabalha o ensino de novas habilidades, a redução de comportamentos que interferem na aprendizagem e a generalização dessas aprendizagens para diferentes ambientes. O trabalho envolve acompanhamento terapêutico (AT) e orientação parental, para que os objetivos trabalhados também façam parte da rotina da criança.</p>
         </div>
       </div>
       <div class="who__item">
@@ -1667,7 +1914,7 @@ main .reflect__lead,
 </section>
 
 <!-- =========================================================
-     4. SOBRE
+     5. SOBRE
      ========================================================= -->
 <section class="section section--tinted" id="sobre">
   <div class="wrap about">
@@ -1678,47 +1925,19 @@ main .reflect__lead,
     <div class="reveal">
       <p class="eyebrow">Sobre mim</p>
       <h2>Oi, eu sou a Rafaella.</h2>
-      <p>
-        Se você chegou até aqui, provavelmente vem observando seu filho com atenção e com
-        alguma preocupação. Quero começar dizendo o mais importante: procurar ajuda não é
-        sinal de que algo deu errado na criação. É sinal de cuidado.
-      </p>
-      <p>
-        Sou psicóloga com atuação dedicada ao público infantojuvenil. Escolhi esse caminho
-        porque acredito que crianças e adolescentes merecem ser levados a sério no que sentem,
-        mesmo quando ainda não têm palavras para explicar. No consultório, o brincar não é
-        passatempo: é a forma mais honesta que uma criança tem de contar o que vive.
-      </p>
-      <p>
-        No caso do desenvolvimento atípico, esse olhar cuidadoso e científico também se traduz
-        na intervenção baseada em ABA, que pode acontecer para além do espaço clínico. Com o
-        acompanhamento de um AT (Acompanhante Terapêutico), as estratégias são levadas para
-        ambientes como casa, escola e outros contextos da rotina da criança, favorecendo
-        aprendizagens mais funcionais, autonomia e participação no dia a dia.
-      </p>
-      <p>
-        Meu trabalho é orientado por práticas baseadas em evidências científicas, principalmente
-        a Terapia Cognitivo-Comportamental (TCC) e a Análise do Comportamento Aplicada (ABA).
-        O objetivo é olhar para cada criança de forma individualizada, considerando suas
-        necessidades, potencialidades e contexto, sempre em parceria com a família e, quando
-        necessário, com a escola e os demais profissionais que fazem parte desse caminho.
-      </p>
-      <p>
-        Você não precisa chegar com tudo organizado na cabeça, nem saber explicar direito o que
-        está acontecendo. Basta chegar. O resto a gente entende junto.
-      </p>
-
-      <div class="creds">
-        <span class="chip"><i style="background:var(--vinho)"></i>CRP 05/69028</span>
-        <span class="chip"><i style="background:var(--menta)"></i>TCC e ABA</span>
-        <span class="chip"><i style="background:var(--azul)"></i>Barra da Tijuca · Rio de Janeiro</span>
-      </div>
+      <p>Se você chegou até aqui, provavelmente vem observando seu filho com atenção e com alguma preocupação. Quero começar dizendo o mais importante: procurar ajuda não é sinal de que algo deu errado na criação. É sinal de cuidado.</p>
+      <p>Sou psicóloga com atuação dedicada ao público infantojuvenil. Escolhi esse caminho porque acredito que crianças e adolescentes merecem ser levados a sério no que sentem, mesmo quando ainda não conseguem encontrar as palavras para explicar. Meu trabalho parte de um olhar individualizado, acolhedor e atento às necessidades de cada criança e de cada família.</p>
+      <p>No caso do desenvolvimento atípico, esse olhar cuidadoso e científico também se traduz na intervenção ABA, que pode acontecer para além do espaço clínico. A supervisão ABA faz parte desse processo e envolve acompanhar de perto a evolução da criança, orientar as estratégias utilizadas e ajustar o trabalho sempre que necessário, para que as intervenções façam sentido na vida real e estejam de acordo com as necessidades de cada criança.</p>
+      <p>A partir dessa supervisão, o trabalho do AT (Acompanhante Terapêutico) pode acontecer em ambientes como casa, escola e outros contextos da rotina da criança, levando as estratégias para situações do dia a dia e favorecendo aprendizagens mais assertivas para a sua qualidade de vida.</p>
+      <p>Meu trabalho é orientado por práticas baseadas em evidências científicas, principalmente a Terapia Cognitivo-Comportamental (TCC) e a Análise do Comportamento Aplicada (ABA). O objetivo é olhar para cada criança de forma individualizada, considerando suas necessidades, potencialidades e contexto, sempre em parceria com a família e, quando necessário, com a escola e os demais profissionais que fazem parte desse caminho.</p>
+      <p>Você não precisa chegar com tudo organizado na cabeça, nem saber explicar direito o que está acontecendo. Basta chegar. O resto a gente entende junto.</p>
+      <p class="about__crp"><strong>CRP 05/69028</strong></p>
     </div>
   </div>
 </section>
 
 <!-- =========================================================
-     5. DEPOIMENTOS
+     6. DEPOIMENTOS
      Conteúdo gerado por build.py a partir de avaliacoes.json
      ========================================================= -->
 <section class="section" id="depoimentos">
@@ -1769,7 +1988,7 @@ main .reflect__lead,
 </section>
 
 <!-- =========================================================
-     6. DÚVIDAS
+     7. DÚVIDAS
      ========================================================= -->
 <section class="section section--tinted" id="duvidas">
   <div class="wrap">
@@ -1783,7 +2002,7 @@ main .reflect__lead,
       <article class="step reveal">
         <div class="step__n">1</div>
         <h3>Primeiro contato</h3>
-        <p>Você me escreve pelo WhatsApp contando brevemente o que está acontecendo. Respondo com as informações sobre horários, valores e formato de atendimento.</p>
+        <p>Você me escreve pelo WhatsApp contando brevemente o que está acontecendo e marcamos um pequeno encontro remoto de poucos minutos para entender a demanda e como posso ajudar.</p>
       </article>
       <article class="step reveal">
         <div class="step__n">2</div>
@@ -1793,7 +2012,7 @@ main .reflect__lead,
       <article class="step reveal">
         <div class="step__n">3</div>
         <h3>Sessões e vínculo</h3>
-        <p>Começam os encontros semanais. As primeiras sessões são dedicadas a construir confiança e entender, no ritmo da criança, o que ela precisa elaborar.</p>
+        <p>Começam os encontros semanais. Nesse primeiro momento, o mais importante é construir, aos poucos, uma relação de confiança e parceria, para que a criança se sinta segura, acolhida e à vontade para compartilhar o que está vivendo.</p>
       </article>
       <article class="step reveal">
         <div class="step__n">4</div>
@@ -1808,44 +2027,24 @@ main .reflect__lead,
 
     <div class="faq reveal">
       <details>
+        <summary><span class="faq__q">Como saber se meu filho precisa de uma avaliação?</span></summary>
+        <p>A avaliação pode ser indicada quando existem dificuldades persistentes no desenvolvimento, comunicação, interação social, autonomia, aprendizagem ou comportamentos que impactam a rotina. O primeiro passo é conversar sobre as demandas da criança para compreender se esse acompanhamento é o mais adequado para ela.</p>
+      </details>
+      <details>
+        <summary><span class="faq__q">O que faz uma supervisora ABA?</span></summary>
+        <p>O acompanhamento ABA acontece dentro de uma estrutura de supervisão. A AT executa as estratégias planejadas e coleta dados, enquanto a supervisora analisa essas informações, orienta a atuação e direciona o planejamento da intervenção.</p>
+      </details>
+      <details>
         <summary><span class="faq__q">Como funciona a terapia com criança, na prática?</span></summary>
-        <p>As sessões são semanais e duram cerca de 50 minutos. Com crianças, o trabalho acontece pelo brincar: jogos, desenho, bonecos e histórias são os recursos pelos quais ela expressa e reorganiza o que sente. Com adolescentes, a conversa ocupa mais espaço. Em paralelo, acontecem os encontros de orientação com os responsáveis.</p>
+        <p>As sessões são semanais e duram cerca de 50 minutos. Com crianças, o processo é adaptado à idade, às necessidades e à forma como cada uma se comunica, criando um espaço seguro para que possa expressar o que sente, desenvolver habilidades e compreender melhor suas emoções e comportamentos. Com adolescentes, a conversa ocupa mais espaço e o trabalho é direcionado às questões próprias dessa fase. Em paralelo, acontecem encontros de orientação com os responsáveis, promovendo alinhamento e participação da família no processo terapêutico.</p>
       </details>
       <details>
         <summary><span class="faq__q">Quais são as formas de pagamento?</span></summary>
-        <p>Aceito Pix, cartão e transferência, com pagamento por sessão ou mensal, conforme combinarmos. Os valores atualizados eu passo na primeira conversa pelo WhatsApp, junto com os horários disponíveis.</p>
+        <p>Aceito Pix, cartão e transferência, com pagamento mensal. Os valores atualizados, junto com os horários disponíveis, eu passo após o nosso primeiro encontro.</p>
       </details>
       <details>
         <summary><span class="faq__q">Você atende por convênio? Emite recibo para reembolso?</span></summary>
         <p>O atendimento é particular. Emito recibo para você solicitar reembolso junto ao seu plano de saúde e para a declaração de imposto de renda. Vale conferir antes com o seu convênio qual é o percentual de reembolso para consulta psicológica.</p>
-      </details>
-      <details>
-        <summary><span class="faq__q">Com que idade meu filho pode começar a terapia?</span></summary>
-        <p>Atendo crianças a partir dos 3 anos e adolescentes até os 18. Nas idades menores, o trabalho acontece principalmente pelo brincar e com participação próxima dos responsáveis.</p>
-      </details>
-      <details>
-        <summary><span class="faq__q">Preciso contar para meu filho que ele vai ao psicólogo?</span></summary>
-        <p>Sim, e isso faz diferença. Explicar de forma simples e verdadeira, dizendo que ele vai conversar e brincar com alguém que ajuda a entender o que a gente sente, reduz a ansiedade e ajuda a criança a chegar mais aberta ao primeiro encontro. Na primeira conversa eu oriento como fazer isso.</p>
-      </details>
-      <details>
-        <summary><span class="faq__q">Os pais participam das sessões?</span></summary>
-        <p>Depende da idade e do momento do processo. Com crianças pequenas, a participação costuma ser maior. De todo modo, os responsáveis são sempre parte do acompanhamento, com encontros de orientação e devolutivas periódicas.</p>
-      </details>
-      <details>
-        <summary><span class="faq__q">Vou saber tudo o que meu filho fala na sessão?</span></summary>
-        <p>Não. O sigilo é o que permite que a criança ou o adolescente confie no espaço. Compartilho com a família o que é necessário para o andamento do trabalho e para orientar o cuidado em casa, sempre com transparência sobre esse combinado desde o início.</p>
-      </details>
-      <details>
-        <summary><span class="faq__q">Quanto tempo dura o acompanhamento?</span></summary>
-        <p>Não existe um prazo fixo. Depende do que motivou a busca, da fase da criança e da resposta ao processo. Avaliamos juntos, ao longo do caminho, como o acompanhamento está evoluindo.</p>
-      </details>
-      <details>
-        <summary><span class="faq__q">Como funcionam as sessões online?</span></summary>
-        <p>Acontecem por videochamada, em plataforma segura, com a mesma duração das presenciais. Funcionam bem principalmente com adolescentes e em encontros de orientação parental. É importante garantir um ambiente reservado durante a sessão.</p>
-      </details>
-      <details>
-        <summary><span class="faq__q">E se eu precisar desmarcar uma sessão?</span></summary>
-        <p>Peço que me avise com pelo menos 24 horas de antecedência, para que a gente consiga remarcar dentro da mesma semana sempre que possível. A regularidade das sessões faz diferença no andamento do trabalho.</p>
       </details>
     </div>
   </div>
@@ -1859,46 +2058,49 @@ main .reflect__lead,
   <div class="wrap">
     <div class="section__head reveal" style="margin-bottom:26px">
       <p class="eyebrow">Instagram</p>
-      <h2>Conteúdo sobre desenvolvimento infantil, toda semana.</h2>
-      <p>Compartilho ali orientações práticas para pais e cuidadores sobre ansiedade, comportamento e regulação emocional.</p>
+      <h2>Acompanhe meu trabalho no Instagram</h2>
+      <p>No Instagram, compartilho conteúdos sobre desenvolvimento infantil, Intervenção ABA, Psicoterapia Infantil e saúde mental, além de mostrar um pouco da rotina e dos bastidores da profissão.</p>
     </div>
-    <div class="ig__head reveal">
+    <div class="ig__grid">
+      <a class="ig__tile reveal" href="https://instagram.com/psi.rafaellarodrigues" target="_blank" rel="noopener"><img src="assets/instagram/01.jpeg" alt="Post: Quem tá por trás! Rafaella Rodrigues se apresenta como psicóloga infantojuvenil." loading="lazy"></a>
+      <a class="ig__tile reveal" href="https://instagram.com/psi.rafaellarodrigues" target="_blank" rel="noopener"><img src="assets/instagram/02.jpeg" alt="Post: Seus filhos vão herdar seus hábitos. Isso te preocupa ou te tranquiliza?" loading="lazy"></a>
+      <a class="ig__tile reveal" href="https://instagram.com/psi.rafaellarodrigues" target="_blank" rel="noopener"><img src="assets/instagram/03.jpeg" alt="Post: Como saber se meu filho precisa de terapia? Você não precisa esperar tudo piorar para procurar ajuda." loading="lazy"></a>
+    </div>
+    <div class="ig__rodape reveal">
       <a class="ig__handle" href="https://instagram.com/psi.rafaellarodrigues" target="_blank" rel="noopener"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg> @psi.rafaellarodrigues</a>
-      <div class="ig__cta">
-        <a class="btn btn--primary" href="https://instagram.com/psi.rafaellarodrigues" target="_blank" rel="noopener">Seguir no Instagram</a>
-      </div>
-    </div>
-    <div class="ig__vazio reveal">
-      <strong>A malha aparece aqui assim que houver imagens.</strong>
-      Salve as imagens dos posts em <code>publicar/assets/instagram/</code>
-      e rode <code>python3 fonte/build.py</code>.
+      <a class="btn btn--primary" href="https://instagram.com/psi.rafaellarodrigues" target="_blank" rel="noopener">Seguir no Instagram</a>
     </div>
   </div>
 </section>
 
 <!-- =========================================================
-     CTA + CONTATO
+     CONVITE + CONTATO
      ========================================================= -->
 <section class="section section--tinted" id="contato">
   <div class="wrap">
-    <div class="cta reveal">
-      <div class="cta__grid">
-        <div>
-          <p class="eyebrow eyebrow--onDeep">Vamos conversar</p>
-          <h2>Dar o primeiro passo já é cuidar.</h2>
-          <p>Me conte pelo WhatsApp o que está acontecendo. A partir dali combinamos a primeira conversa e pensamos juntos no melhor caminho para a sua família.</p>
-          <div class="cta__buttons">
-            <a class="btn btn--onDeep" href="https://wa.me/5521969025509" target="_blank" rel="noopener">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
-              Falar no WhatsApp
-            </a>
-            <a class="btn btn--outlineDeep" href="https://instagram.com/psi.rafaellarodrigues" target="_blank" rel="noopener">Ver o Instagram</a>
-          </div>
-        </div>
-        <div class="cta__art">
-          <img src="assets/rafaella_cta.jpg"
-               alt="Rafaella Rodrigues, psicóloga infantojuvenil, sentada e sorrindo">
-        </div>
+    <div class="convite reveal">
+      <div class="convite__foto">
+        <img class="convite__retrato" src="assets/rafaella_convite.jpg"
+             alt="Rafaella Rodrigues, psicóloga infantojuvenil, sorrindo à mesa do consultório">
+        <img class="convite__coracao" src="assets/char_heart.png" alt="" aria-hidden="true">
+      </div>
+
+      <div class="convite__texto">
+        <p class="eyebrow">Vamos conversar</p>
+        <h2>Vocês não precisam caminhar sozinhos.</h2>
+        <p>Sei que, por trás de cada mensagem, existe uma família cheia de amor, de perguntas e, às vezes, de cansaço. Por isso, a nossa primeira conversa é um momento para eu ouvir vocês com calma, entender o que está acontecendo e, juntos, pensarmos no melhor caminho para o seu filho.</p>
+        <p class="convite__assinatura">Com carinho, Rafaella.</p>
+
+        <ul class="convite__cuidados">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7.5 3c0 5.4-7.5 10-7.5 10Z"/></svg>Escuta sem julgamentos</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7.5 3c0 5.4-7.5 10-7.5 10Z"/></svg>Família presente no processo</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7.5 3c0 5.4-7.5 10-7.5 10Z"/></svg>Barra da Tijuca ou online</li>
+        </ul>
+
+        <a class="btn btn--primary" href="https://wa.me/5521969025509?text=Oi%2C%20Rafaella.%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20sess%C3%B5es%21" target="_blank" rel="noopener">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+          Conversar no WhatsApp
+        </a>
       </div>
     </div>
   </div>
@@ -1956,7 +2158,7 @@ main .reflect__lead,
         <img src="assets/logo_horizontal.png" alt="Rafaella Rodrigues, Psicóloga Infantojuvenil">
         <p class="footer__crp">CRP 05/69028</p>
         <p>
-          Atendimento psicológico infantojuvenil e intervenção baseada em ABA, na Barra da
+          Atendimento psicológico infantojuvenil e intervenção ABA, na Barra da
           Tijuca e online.
         </p>
       </div>
@@ -1975,7 +2177,7 @@ main .reflect__lead,
         <h2 class="footer__titulo">Contato</h2>
         <ul>
           <li>
-            <a href="https://wa.me/5521969025509" target="_blank" rel="noopener">
+            <a href="https://wa.me/5521969025509?text=Oi%2C%20Rafaella.%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20sess%C3%B5es%21" target="_blank" rel="noopener">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg><span>(21) 96902-5509</span>
             </a>
           </li>
@@ -2024,7 +2226,7 @@ main .reflect__lead,
   </div>
 </div>
 
-<a class="wa-float" href="https://wa.me/5521969025509" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+<a class="wa-float" href="https://wa.me/5521969025509?text=Oi%2C%20Rafaella.%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20sess%C3%B5es%21" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
 </a>
 
